@@ -207,3 +207,56 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
+
+/* =========================================
+   PROJECT SCREENSHOT GALLERIES
+========================================= */
+
+const thumbnails = document.querySelectorAll(".thumbnail");
+
+thumbnails.forEach((thumbnail) => {
+
+  thumbnail.addEventListener("click", () => {
+
+    const galleryName = thumbnail.dataset.gallery;
+    const imageSource = thumbnail.dataset.image;
+    const imageAlt = thumbnail.dataset.alt;
+
+    const mainImage = document.getElementById(
+      `${galleryName}-main-image`
+    );
+
+    if (!mainImage || !imageSource) {
+      return;
+    }
+
+    // Change main screenshot
+    mainImage.src = imageSource;
+
+    // Update accessible description
+    if (imageAlt) {
+      mainImage.alt = imageAlt;
+    }
+
+
+    // Find all thumbnails belonging to this project
+    const projectThumbnails = document.querySelectorAll(
+      `.thumbnail[data-gallery="${galleryName}"]`
+    );
+
+
+    // Remove active state from all thumbnails
+    projectThumbnails.forEach((item) => {
+      item.classList.remove("active");
+      item.setAttribute("aria-current", "false");
+    });
+
+
+    // Highlight selected thumbnail
+    thumbnail.classList.add("active");
+    thumbnail.setAttribute("aria-current", "true");
+
+  });
+
+});
+
