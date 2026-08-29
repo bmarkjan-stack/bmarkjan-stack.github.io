@@ -167,9 +167,11 @@ const thumbnails = document.querySelectorAll(".thumbnail");
 thumbnails.forEach((thumbnail) => {
 
   thumbnail.addEventListener("click", () => {
+
     const galleryName = thumbnail.dataset.gallery;
     const imageSource = thumbnail.dataset.image;
     const imageAlt = thumbnail.dataset.alt;
+
     const mainImage = document.getElementById(
       `${galleryName}-main-image`
     );
@@ -178,29 +180,214 @@ thumbnails.forEach((thumbnail) => {
       return;
     }
 
-    // Change main screenshot
+
+    // Update main image
     mainImage.src = imageSource;
 
-    // Update accessible description
     if (imageAlt) {
       mainImage.alt = imageAlt;
     }
 
-    // Find all thumbnails belonging to this project
-    const projectThumbnails = document.querySelectorAll(
-      `.thumbnail[data-gallery="${galleryName}"]`
-    );
 
-    // Remove active state from all thumbnails
+    // Update the lightbox button
+    const gallery =
+      thumbnail.closest(".project-gallery");
+
+    const mainImageButton =
+      gallery?.querySelector(".main-image-button");
+
+    if (mainImageButton) {
+      mainImageButton.dataset.image =
+        imageSource;
+
+      mainImageButton.dataset.alt =
+        imageAlt || mainImage.alt;
+    }
+
+
+    // Update active thumbnail
+    const projectThumbnails =
+      document.querySelectorAll(
+        `.thumbnail[data-gallery="${galleryName}"]`
+      );
+
     projectThumbnails.forEach((item) => {
+
       item.classList.remove("active");
-      item.setAttribute("aria-current", "false");
+
+      item.setAttribute(
+        "aria-current",
+        "false"
+      );
+
     });
 
-    // Highlight selected thumbnail
+
     thumbnail.classList.add("active");
-    thumbnail.setAttribute("aria-current", "true");
+
+    thumbnail.setAttribute(
+      "aria-current",
+      "true"
+    );
 
   });
+
 });
 
+
+/* =========================================
+   PROJECT IMAGE LIGHTBOX
+========================================= */
+
+const lightbox =
+  document.getElementById("image-lightbox");
+
+const lightboxImage =
+  document.getElementById("lightbox-image");
+
+const lightboxClose =
+  document.getElementById("lightbox-close");
+
+
+/* =========================================
+   OPEN LIGHTBOX
+========================================= */
+
+function openLightbox(imageSource, imageAlt) {
+
+  if (!lightbox || !lightboxImage) {
+    return;
+  }
+
+
+  lightboxImage.src = imageSource;
+
+  lightboxImage.alt =
+    imageAlt || "Project screenshot";
+
+
+  lightbox.hidden = false;
+
+  document.body.style.overflow = "hidden";
+
+
+  if (lightboxClose) {
+    lightboxClose.focus();
+  }
+
+}
+
+
+/* =========================================
+   CLOSE LIGHTBOX
+========================================= */
+
+function closeLightbox() {
+
+  if (!lightbox) {
+    return;
+  }
+
+
+  lightbox.hidden = true;
+
+
+  if (lightboxImage) {
+    lightboxImage.src = "";
+    lightboxImage.alt = "";
+  }
+
+
+  document.body.style.overflow = "";
+
+}
+
+
+/* =========================================
+   MAIN IMAGE BUTTONS
+========================================= */
+
+const mainImageButtons =
+  document.querySelectorAll(
+    ".main-image-button"
+  );
+
+
+mainImageButtons.forEach((button) => {
+
+  button.addEventListener("click", () => {
+
+    const imageSource =
+      button.dataset.image;
+
+    const imageAlt =
+      button.dataset.alt;
+
+
+    if (!imageSource) {
+      return;
+    }
+
+
+    openLightbox(
+      imageSource,
+      imageAlt
+    );
+
+  });
+
+});
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+if (lightboxClose) {
+
+  lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+  );
+
+}
+
+
+/* =========================================
+   CLICK BACKDROP
+========================================= */
+
+if (lightbox) {
+
+  lightbox.addEventListener(
+    "click",
+    (event) => {
+
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (
+      event.key === "Escape" &&
+      lightbox &&
+      !lightbox.hidden
+    ) {
+      closeLightbox();
+    }
+
+  }
+);
