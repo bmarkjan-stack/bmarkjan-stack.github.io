@@ -876,33 +876,51 @@
      PROJECT IMAGE LIGHTBOX
 ========================================= -->
 
-    <div
-        class="image-lightbox"
-        id="image-lightbox"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="lightbox-title"
-        hidden
+<div
+    id="image-lightbox"
+    class="image-lightbox"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-label="Project screenshot preview"
+>
+    <button
+        id="lightbox-prev"
+        class="lightbox-nav lightbox-prev"
+        type="button"
+        aria-label="Previous project screenshot"
     >
-        <div class="lightbox-content">
-            <button
-                class="lightbox-close"
-                id="lightbox-close"
-                type="button"
-                aria-label="Close image preview"
-            >
-                &times;
-            </button>
-            <h2 id="lightbox-title" class="sr-only">
-                Project screenshot preview
-            </h2>
-            <img
-                id="lightbox-image"
-                src=""
-                alt=""
-            >
-        </div>
+        &#10094;
+    </button>
+    <div class="lightbox-content">
+        <button
+            id="lightbox-close"
+            class="lightbox-close"
+            type="button"
+            aria-label="Close image preview"
+        >
+            &times;
+        </button>
+        <img
+            id="lightbox-image"
+            src=""
+            alt=""
+        >
+        <p
+            id="lightbox-counter"
+            class="lightbox-counter"
+            aria-live="polite"
+        ></p>
     </div>
+    <button
+        id="lightbox-next"
+        class="lightbox-nav lightbox-next"
+        type="button"
+        aria-label="Next project screenshot"
+    >
+        &#10095;
+    </button>
+</div>
 
 <script src="script.js"></script>
 </body>

@@ -234,7 +234,6 @@ thumbnails.forEach((thumbnail) => {
 
 });
 
-
 /* =========================================
    PROJECT IMAGE LIGHTBOX
 ========================================= */
@@ -248,28 +247,216 @@ const lightboxImage =
 const lightboxClose =
   document.getElementById("lightbox-close");
 
+const lightboxPrev =
+  document.getElementById("lightbox-prev");
+
+const lightboxNext =
+  document.getElementById("lightbox-next");
+
+const lightboxCounter =
+  document.getElementById("lightbox-counter");
+
+
+/*
+ * All main project images.
+ *
+ * The images remain clickable even though
+ * they are not wrapped in another element.
+ */
+
+const mainProjectImages =
+  document.querySelectorAll(
+    ".project-main-image img"
+  );
+
+
+/*
+ * These variables keep track of the
+ * currently opened project's screenshots.
+ */
+
+let currentGallery = [];
+
+let currentImageIndex = 0;
+
+
+/* =========================================
+   BUILD GALLERY
+========================================= */
+
+function getProjectGallery(image) {
+
+  const projectGallery =
+    image.closest(".project-card")
+      ?.querySelector(".project-thumbnails");
+
+  if (!projectGallery) {
+    return [];
+  }
+
+
+  const thumbnailElements =
+    projectGallery.querySelectorAll(".thumbnail");
+
+
+  return Array.from(thumbnailElements).map(
+    (thumbnail) => ({
+      src: thumbnail.dataset.image,
+      alt: thumbnail.dataset.alt || ""
+    })
+  );
+}
+
+
+/* =========================================
+   UPDATE LIGHTBOX IMAGE
+========================================= */
+
+function updateLightboxImage() {
+
+  if (
+    !lightboxImage ||
+    currentGallery.length === 0
+  ) {
+    return;
+  }
+
+
+  const currentImage =
+    currentGallery[currentImageIndex];
+
+
+  lightboxImage.src =
+    currentImage.src;
+
+
+  lightboxImage.alt =
+    currentImage.alt ||
+    "Project screenshot";
+
+
+  /*
+   * Update screenshot counter.
+   *
+   * Example:
+   * 1 / 5
+   */
+
+  if (lightboxCounter) {
+
+    lightboxCounter.textContent =
+      `${currentImageIndex + 1} / ${currentGallery.length}`;
+
+  }
+
+
+  /*
+   * Hide arrows when there is only one
+   * screenshot.
+   */
+
+  if (lightboxPrev) {
+
+    lightboxPrev.hidden =
+      currentGallery.length <= 1;
+
+  }
+
+
+  if (lightboxNext) {
+
+    lightboxNext.hidden =
+      currentGallery.length <= 1;
+
+  }
+
+}
+
 
 /* =========================================
    OPEN LIGHTBOX
 ========================================= */
 
-function openLightbox(imageSource, imageAlt) {
+function openLightbox(image) {
 
-  if (!lightbox || !lightboxImage) {
+  if (
+    !lightbox ||
+    !lightboxImage
+  ) {
     return;
   }
 
 
-  lightboxImage.src = imageSource;
+  /*
+   * Get every screenshot belonging to
+   * the project that was clicked.
+   */
 
-  lightboxImage.alt =
-    imageAlt || "Project screenshot";
+  currentGallery =
+    getProjectGallery(image);
 
+
+  /*
+   * If the project has no thumbnails,
+   * fall back to the image that was clicked.
+   */
+
+  if (currentGallery.length === 0) {
+
+    currentGallery = [
+      {
+        src: image.src,
+        alt: image.alt
+      }
+    ];
+
+  }
+
+
+  /*
+   * Find which screenshot is currently
+   * being displayed.
+   */
+
+  const currentSrc =
+    image.getAttribute("src");
+
+
+  const matchingIndex =
+    currentGallery.findIndex(
+      (item) =>
+        item.src === currentSrc
+    );
+
+
+  currentImageIndex =
+    matchingIndex >= 0
+      ? matchingIndex
+      : 0;
+
+
+  updateLightboxImage();
+
+
+  /*
+   * Show lightbox.
+   */
 
   lightbox.hidden = false;
 
+
+  /*
+   * Prevent the page behind the lightbox
+   * from scrolling.
+   */
+
   document.body.style.overflow = "hidden";
 
+
+  /*
+   * Focus the close button for
+   * keyboard accessibility.
+   */
 
   if (lightboxClose) {
     lightboxClose.focus();
@@ -293,10 +480,31 @@ function closeLightbox() {
 
 
   if (lightboxImage) {
+
     lightboxImage.src = "";
+
     lightboxImage.alt = "";
+
   }
 
+
+  if (lightboxCounter) {
+    lightboxCounter.textContent = "";
+  }
+
+
+  /*
+   * Reset gallery state.
+   */
+
+  currentGallery = [];
+
+  currentImageIndex = 0;
+
+
+  /*
+   * Restore page scrolling.
+   */
 
   document.body.style.overflow = "";
 
@@ -304,39 +512,131 @@ function closeLightbox() {
 
 
 /* =========================================
-   MAIN IMAGE BUTTONS
+   NEXT IMAGE
 ========================================= */
 
-const mainImageButtons =
-  document.querySelectorAll(
-    ".main-image-button"
+function showNextImage() {
+
+  if (currentGallery.length <= 1) {
+    return;
+  }
+
+
+  /*
+   * Move to the next image.
+   *
+   * The modulo operator makes the gallery
+   * loop back to the first screenshot.
+   */
+
+  currentImageIndex =
+    (currentImageIndex + 1) %
+    currentGallery.length;
+
+
+  updateLightboxImage();
+
+}
+
+
+/* =========================================
+   PREVIOUS IMAGE
+========================================= */
+
+function showPreviousImage() {
+
+  if (currentGallery.length <= 1) {
+    return;
+  }
+
+
+  /*
+   * Move to the previous image.
+   *
+   * If we're at the first image,
+   * go back to the last image.
+   */
+
+  currentImageIndex =
+    (
+      currentImageIndex -
+      1 +
+      currentGallery.length
+    ) %
+    currentGallery.length;
+
+
+  updateLightboxImage();
+
+}
+
+
+/* =========================================
+   CLICK MAIN PROJECT IMAGE
+========================================= */
+
+mainProjectImages.forEach((image) => {
+
+  image.addEventListener(
+    "click",
+    () => {
+
+      openLightbox(image);
+
+    }
   );
 
-
-mainImageButtons.forEach((button) => {
-
-  button.addEventListener("click", () => {
-
-    const imageSource =
-      button.dataset.image;
-
-    const imageAlt =
-      button.dataset.alt;
-
-
-    if (!imageSource) {
-      return;
-    }
-
-
-    openLightbox(
-      imageSource,
-      imageAlt
-    );
-
-  });
-
 });
+
+
+/* =========================================
+   NEXT BUTTON
+========================================= */
+
+if (lightboxNext) {
+
+  lightboxNext.addEventListener(
+    "click",
+    (event) => {
+
+      /*
+       * Prevent the click from reaching
+       * the lightbox backdrop.
+       */
+
+      event.stopPropagation();
+
+      showNextImage();
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   PREVIOUS BUTTON
+========================================= */
+
+if (lightboxPrev) {
+
+  lightboxPrev.addEventListener(
+    "click",
+    (event) => {
+
+      /*
+       * Prevent the click from reaching
+       * the lightbox backdrop.
+       */
+
+      event.stopPropagation();
+
+      showPreviousImage();
+
+    }
+  );
+
+}
 
 
 /* =========================================
@@ -347,7 +647,13 @@ if (lightboxClose) {
 
   lightboxClose.addEventListener(
     "click",
-    closeLightbox
+    (event) => {
+
+      event.stopPropagation();
+
+      closeLightbox();
+
+    }
   );
 
 }
@@ -363,8 +669,15 @@ if (lightbox) {
     "click",
     (event) => {
 
+      /*
+       * Close only when clicking the dark
+       * background itself.
+       */
+
       if (event.target === lightbox) {
+
         closeLightbox();
+
       }
 
     }
@@ -374,19 +687,58 @@ if (lightbox) {
 
 
 /* =========================================
-   ESCAPE KEY
+   KEYBOARD NAVIGATION
 ========================================= */
 
 document.addEventListener(
   "keydown",
   (event) => {
 
+    /*
+     * Don't do anything if the lightbox
+     * isn't open.
+     */
+
     if (
-      event.key === "Escape" &&
-      lightbox &&
-      !lightbox.hidden
+      !lightbox ||
+      lightbox.hidden
     ) {
+      return;
+    }
+
+
+    /* Escape = close */
+
+    if (event.key === "Escape") {
+
       closeLightbox();
+
+      return;
+
+    }
+
+
+    /* ArrowRight = next */
+
+    if (event.key === "ArrowRight") {
+
+      event.preventDefault();
+
+      showNextImage();
+
+      return;
+
+    }
+
+
+    /* ArrowLeft = previous */
+
+    if (event.key === "ArrowLeft") {
+
+      event.preventDefault();
+
+      showPreviousImage();
+
     }
 
   }
