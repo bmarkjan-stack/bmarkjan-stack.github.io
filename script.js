@@ -46,52 +46,70 @@ const themeIcon = document.getElementById("theme-icon");
 
 const savedTheme = localStorage.getItem("portfolio-theme");
 
-if (savedTheme === "dark") {
-  document.documentElement.setAttribute("data-theme", "dark");
-  if (themeIcon) {
-    themeIcon.textContent = "☀️";
-  }
-  if (themeToggle) {
-    themeToggle.setAttribute(
-      "aria-label",
-      "Switch to light mode"
-    );
-  }
+// Apply saved light theme
+if (savedTheme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+    if (themeIcon) {
+        themeIcon.textContent = "🌙";
+    }
+
+    if (themeToggle) {
+        themeToggle.setAttribute(
+            "aria-label",
+            "Switch to dark mode"
+        );
+    }
+}
+
+// Dark mode is the default
+else {
+    document.documentElement.removeAttribute("data-theme");
+    if (themeIcon) {
+        themeIcon.textContent = "☀️";
+    }
+
+    if (themeToggle) {
+        themeToggle.setAttribute(
+            "aria-label",
+            "Switch to light mode"
+        );
+    }
 }
 
 
 if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+        const isLight = document.documentElement.getAttribute("data-theme") === "light";
+        if (isLight) {
+            // Switch to dark mode
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.setItem(
+                "portfolio-theme",
+                "dark"
+            );
 
-  themeToggle.addEventListener("click", () => {
-    const isDark =
-      document.documentElement.getAttribute("data-theme") === "dark";
-    if (isDark) {
-      document.documentElement.removeAttribute("data-theme");
-      localStorage.setItem(
-        "portfolio-theme",
-        "light"
-      );
-      themeIcon.textContent = "🌙";
-      themeToggle.setAttribute(
-        "aria-label",
-        "Switch to dark mode"
-      );
-    } else {
-      document.documentElement.setAttribute(
-        "data-theme",
-        "dark"
-      );
-      localStorage.setItem(
-        "portfolio-theme",
-        "dark"
-      );
-      themeIcon.textContent = "☀️";
-      themeToggle.setAttribute(
-        "aria-label",
-        "Switch to light mode"
-      );
-    }
-  });
+            themeIcon.textContent = "☀️";
+            themeToggle.setAttribute(
+                "aria-label",
+                "Switch to light mode"
+            );
+        } else {
+            // Switch to light mode
+            document.documentElement.setAttribute(
+                "data-theme",
+                "light"
+            );
+            localStorage.setItem(
+                "portfolio-theme",
+                "light"
+            );
+            themeIcon.textContent = "🌙";
+            themeToggle.setAttribute(
+                "aria-label",
+                "Switch to dark mode"
+            );
+        }
+    });
 }
 
 /* =========================================
