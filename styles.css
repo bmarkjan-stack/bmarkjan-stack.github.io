@@ -53,6 +53,19 @@
     --shadow-medium: 0 10px 30px rgba(15, 23, 42, 0.10);
 }
 
+[data-theme="light"] body {
+    background-image:
+        linear-gradient(
+            rgba(71, 71, 184, 0.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(71, 71, 184, 0.045) 1px,
+            transparent 1px
+        );
+}
+
 /* RESET */
 
 * {
@@ -69,12 +82,28 @@ html {
 body {
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-    background: var(--bg-color);
+    background-color: var(--bg-color);
     color: var(--text-color);
 
     line-height: 1.6;
 
-    transition: background-color var(--transition), color var(--transition);
+    /* Subtle developer-style grid */
+    background-image:
+        linear-gradient(
+            rgba(129, 140, 248, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(129, 140, 248, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+
+    transition:
+        background-color var(--transition),
+        color var(--transition);
 }
 
 img {
@@ -324,18 +353,67 @@ ul {
 ========================================= */
 
 .hero {
+  position: relative;
+  overflow: hidden;
+
   max-width: var(--max-width);
   min-height: calc(100vh - 70px);
   margin: auto;
   padding: 6rem 1.5rem;
+
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
   gap: 4rem;
 }
 
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  top: -250px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(129, 140, 248, 0.12) 0%,
+    rgba(129, 140, 248, 0.04) 35%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
 .hero-content {
+  position: relative;
+  z-index: 1;
+
   animation: fadeUp 0.8s ease both;
+}
+
+.hero::after {
+  content: "</>";
+
+  position: absolute;
+
+  right: 8%;
+  bottom: 15%;
+
+  font-family: monospace;
+  font-size: 5rem;
+  font-weight: 700;
+
+  color: var(--primary-color);
+
+  opacity: 0.035;
+
+  pointer-events: none;
 }
 
 .hero-greeting {
@@ -687,6 +765,18 @@ ul {
   color: var(--primary-color);
   font-size: 0.75rem;
   font-weight: 700;
+}
+
+/* =========================================
+   PROJECT GRID
+========================================= */
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    gap: 1.5rem;
 }
 
 /* =========================================
@@ -1157,6 +1247,29 @@ ul {
 .project-content p {
   color: var(--text-secondary);
   margin-bottom: 1.25rem;
+}
+
+.project-card {
+  overflow: hidden;
+
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-medium);
+
+  box-shadow: var(--shadow-small);
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+
+  border-color: var(--primary-color);
+
+  box-shadow: var(--shadow-medium);
 }
 
 /* =========================================
