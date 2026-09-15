@@ -125,27 +125,107 @@ if (currentYear) {
    CONTACT FORM
 ========================================= */
 
+// The backend is a separate Flask API (see the
+// p10-portfolio-contact-api project). When running the portfolio
+// locally, requests go to the local Flask dev server. Once the API
+// is deployed (e.g. on Render), replace PRODUCTION_API_URL below
+// with that deployed URL.
+const PRODUCTION_API_URL = "https://p10-portfolio-contact-api.onrender.com/api/contact";
+
+const isLocalHost = ["localhost", "127.0.0.1", ""].includes(
+    window.location.hostname
+);
+
+const CONTACT_API_URL = isLocalHost
+    ? "http://127.0.0.1:5000/api/contact"
+    : PRODUCTION_API_URL;
+
 const contactForm = document.getElementById("contact-form");
 const formMessage = document.getElementById("form-message");
 
 if (contactForm && formMessage) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const nameInput = document.getElementById("name");
-    const emailInput = document.getElementById("email");
-    const messageInput = document.getElementById("message");
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const message = messageInput.value.trim();
-    if (!name || !email || !message) {
-      formMessage.textContent =
-        "Please complete all fields.";
-      return;
-    }
-    formMessage.textContent =
-      `Thanks, ${name}! Your message has been received.`;
-    contactForm.reset();
-  });
+    const submitButton = contactForm.querySelector(
+        'button[type="submit"]'
+    );
+    const defaultButtonText = submitButton
+        ? submitButton.textContent
+        : "Send Message";
+
+    const setFormMessage = (text, status) => {
+        formMessage.textContent = text;
+        formMessage.classList.remove("is-success", "is-error");
+        if (status === "success") {
+            formMessage.classList.add("is-success");
+        } else if (status === "error") {
+            formMessage.classList.add("is-error");
+        }
+    };
+
+    contactForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const messageInput = document.getElementById("message");
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if (!name || !email || !message) {
+            setFormMessage("Please complete all fields.", "error");
+            return;
+        }
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+        }
+        setFormMessage("Sending your message...", null);
+
+        try {
+            const response = await fetch(CONTACT_API_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, email, message })
+            });
+
+            let data = {};
+            try {
+                data = await response.json();
+            } catch (parseError) {
+                data = {};
+            }
+
+            if (!response.ok) {
+                throw new Error(
+                    data.error ||
+                    "Unable to send your message right now. Please try again later."
+                );
+            }
+
+            setFormMessage(
+                data.message || `Thanks, ${name}! Your message has been sent.`,
+                "success"
+            );
+            contactForm.reset();
+
+        } catch (error) {
+            setFormMessage(
+                error.message ||
+                "Something went wrong. Please try again later, or email me directly.",
+                "error"
+            );
+
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = defaultButtonText;
+            }
+        }
+    });
 }
 
 /* =========================================
