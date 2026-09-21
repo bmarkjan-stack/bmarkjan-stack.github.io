@@ -2,48 +2,41 @@ const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
 if (menuToggle && navLinks) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("active");
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(isOpen)
-    );
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen
-        ? "Close navigation menu"
-        : "Open navigation menu"
-    );
-  });
-
-
-  // Close menu after clicking a navigation link
-
-  const navigationLinks = navLinks.querySelectorAll("a");
-  navigationLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-      menuToggle.setAttribute(
-        "aria-label",
-        "Open navigation menu"
-      );
+    menuToggle.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("active");
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
     });
-  });
 
+    const navigationLinks = navLinks.querySelectorAll("a");
+    navigationLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open navigation menu"
+            );
+        });
+    });
 }
-
 
 /* =========================================
    DARK / LIGHT THEME
 ========================================= */
-
 const themeToggle = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
-
 const savedTheme = localStorage.getItem("portfolio-theme");
 
 // Apply saved light theme
@@ -118,13 +111,12 @@ if (themeToggle) {
 
 const currentYear = document.getElementById("current-year");
 if (currentYear) {
-  currentYear.textContent = new Date().getFullYear();
+    currentYear.textContent = new Date().getFullYear();
 }
 
 /* =========================================
    CONTACT FORM
 ========================================= */
-
 // The backend is a separate Flask API (see the
 // p10-portfolio-contact-api project). When running the portfolio
 // locally, requests go to the local Flask dev server. Once the API
@@ -231,613 +223,536 @@ if (contactForm && formMessage) {
 /* =========================================
    SCROLL REVEAL
 ========================================= */
-
 const revealElements = document.querySelectorAll(
-  ".skill-card, .certification-card, .project-card, .contact-item"
+    ".skill-card, .certification-card, .project-card, .contact-item"
 );
 
 const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.animation =
-          "fadeUp 0.6s ease both";
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.1
-  }
+    (entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation =
+                "fadeUp 0.6s ease both";
+                observer.unobserve(entry.target);
+            }
+        });
+    },
+    {
+        threshold: 0.1
+    }
 );
 
-
 revealElements.forEach((element) => {
-  revealObserver.observe(element);
+    revealObserver.observe(element);
 });
 
 /* =========================================
    PROJECT SCREENSHOT GALLERIES
 ========================================= */
-
 const thumbnails = document.querySelectorAll(".thumbnail");
 
 thumbnails.forEach((thumbnail) => {
+    thumbnail.addEventListener("click", () => {
+        const galleryName = thumbnail.dataset.gallery;
+        const imageSource = thumbnail.dataset.image;
+        const imageAlt = thumbnail.dataset.alt;
+        const mainImage = document.getElementById(`${galleryName}-main-image`);
 
-  thumbnail.addEventListener("click", () => {
+        if (!mainImage || !imageSource) {
+            return;
+        }
 
-    const galleryName = thumbnail.dataset.gallery;
-    const imageSource = thumbnail.dataset.image;
-    const imageAlt = thumbnail.dataset.alt;
+        // Update main image
+        mainImage.src = imageSource;
+        if (imageAlt) {
+            mainImage.alt = imageAlt;
+        }
 
-    const mainImage = document.getElementById(
-      `${galleryName}-main-image`
-    );
+        // Update the lightbox button
+        const gallery = thumbnail.closest(".project-gallery");
+        const mainImageButton = gallery?.querySelector(".main-image-button");
 
-    if (!mainImage || !imageSource) {
-      return;
-    }
+        if (mainImageButton) {
+            mainImageButton.dataset.image =
+                imageSource;
+            mainImageButton.dataset.alt =
+                imageAlt || mainImage.alt;
+        }
 
+        // Update active thumbnail
+        const projectThumbnails = document.querySelectorAll(`.thumbnail[data-gallery="${galleryName}"]`);
 
-    // Update main image
-    mainImage.src = imageSource;
+        projectThumbnails.forEach((item) => {
+            item.classList.remove("active");
+            item.setAttribute(
+                "aria-current",
+                "false"
+            );
+        });
 
-    if (imageAlt) {
-      mainImage.alt = imageAlt;
-    }
-
-
-    // Update the lightbox button
-    const gallery =
-      thumbnail.closest(".project-gallery");
-
-    const mainImageButton =
-      gallery?.querySelector(".main-image-button");
-
-    if (mainImageButton) {
-      mainImageButton.dataset.image =
-        imageSource;
-
-      mainImageButton.dataset.alt =
-        imageAlt || mainImage.alt;
-    }
-
-
-    // Update active thumbnail
-    const projectThumbnails =
-      document.querySelectorAll(
-        `.thumbnail[data-gallery="${galleryName}"]`
-      );
-
-    projectThumbnails.forEach((item) => {
-
-      item.classList.remove("active");
-
-      item.setAttribute(
-        "aria-current",
-        "false"
-      );
-
+        thumbnail.classList.add("active");
+        thumbnail.setAttribute(
+            "aria-current",
+            "true"
+        );
     });
-
-
-    thumbnail.classList.add("active");
-
-    thumbnail.setAttribute(
-      "aria-current",
-      "true"
-    );
-
-  });
-
 });
 
 /* =========================================
    PROJECT IMAGE LIGHTBOX
 ========================================= */
-
-const lightbox =
-  document.getElementById("image-lightbox");
-
-const lightboxImage =
-  document.getElementById("lightbox-image");
-
-const lightboxClose =
-  document.getElementById("lightbox-close");
-
-const lightboxPrev =
-  document.getElementById("lightbox-prev");
-
-const lightboxNext =
-  document.getElementById("lightbox-next");
-
-const lightboxCounter =
-  document.getElementById("lightbox-counter");
-
-
-/*
- * All main project images.
- *
- * The images remain clickable even though
- * they are not wrapped in another element.
- */
-
-const mainProjectImages =
-  document.querySelectorAll(
-    ".project-main-image img"
-  );
-
-
-/*
- * These variables keep track of the
- * currently opened project's screenshots.
- */
+const lightbox = document.getElementById("image-lightbox");
+const lightboxImage = document.getElementById("lightbox-image");
+const lightboxClose = document.getElementById("lightbox-close");
+const lightboxPrev = document.getElementById("lightbox-prev");
+const lightboxNext = document.getElementById("lightbox-next");
+const lightboxCounter = document.getElementById("lightbox-counter");
+const mainProjectImages = document.querySelectorAll(".project-main-image img");
 
 let currentGallery = [];
-
 let currentImageIndex = 0;
-
 
 /* =========================================
    BUILD GALLERY
 ========================================= */
-
 function getProjectGallery(image) {
+    const projectGallery = image.closest(".project-card") ?.querySelector(".project-thumbnails");
 
-  const projectGallery =
-    image.closest(".project-card")
-      ?.querySelector(".project-thumbnails");
+    if (!projectGallery) {
+        return [];
+    }
 
-  if (!projectGallery) {
-    return [];
-  }
+    const thumbnailElements = projectGallery.querySelectorAll(".thumbnail");
 
-
-  const thumbnailElements =
-    projectGallery.querySelectorAll(".thumbnail");
-
-
-  return Array.from(thumbnailElements).map(
-    (thumbnail) => ({
-      src: thumbnail.dataset.image,
-      alt: thumbnail.dataset.alt || ""
-    })
-  );
+    return Array.from(thumbnailElements).map(
+        (thumbnail) => ({
+            src: thumbnail.dataset.image,
+            alt: thumbnail.dataset.alt || ""
+        })
+    );
 }
-
 
 /* =========================================
    UPDATE LIGHTBOX IMAGE
 ========================================= */
-
 function updateLightboxImage() {
+    if (
+        !lightboxImage ||
+        currentGallery.length === 0
+    ) {
+        return;
+    }
 
-  if (
-    !lightboxImage ||
-    currentGallery.length === 0
-  ) {
-    return;
-  }
+    const currentImage = currentGallery[currentImageIndex];
+    lightboxImage.src = currentImage.src;
+    lightboxImage.alt = currentImage.alt || "Project screenshot";
 
+    if (lightboxCounter) {
+        lightboxCounter.textContent = `${currentImageIndex + 1} / ${currentGallery.length}`;
+    }
 
-  const currentImage =
-    currentGallery[currentImageIndex];
+    if (lightboxPrev) {
+        lightboxPrev.hidden = currentGallery.length <= 1;
+    }
 
-
-  lightboxImage.src =
-    currentImage.src;
-
-
-  lightboxImage.alt =
-    currentImage.alt ||
-    "Project screenshot";
-
-
-  /*
-   * Update screenshot counter.
-   *
-   * Example:
-   * 1 / 5
-   */
-
-  if (lightboxCounter) {
-
-    lightboxCounter.textContent =
-      `${currentImageIndex + 1} / ${currentGallery.length}`;
-
-  }
-
-
-  /*
-   * Hide arrows when there is only one
-   * screenshot.
-   */
-
-  if (lightboxPrev) {
-
-    lightboxPrev.hidden =
-      currentGallery.length <= 1;
-
-  }
-
-
-  if (lightboxNext) {
-
-    lightboxNext.hidden =
-      currentGallery.length <= 1;
-
-  }
-
+    if (lightboxNext) {
+        lightboxNext.hidden = currentGallery.length <= 1;
+    }
 }
-
 
 /* =========================================
    OPEN LIGHTBOX
 ========================================= */
-
 function openLightbox(image) {
+    if (
+        !lightbox || !lightboxImage
+    ) {
+        return;
+    }
 
-  if (
-    !lightbox ||
-    !lightboxImage
-  ) {
-    return;
-  }
+    currentGallery = getProjectGallery(image);
 
+    if (currentGallery.length === 0) {
+        currentGallery = [
+            {
+                src: image.src,
+                alt: image.alt
+            }
+        ];
+    }
 
-  /*
-   * Get every screenshot belonging to
-   * the project that was clicked.
-   */
-
-  currentGallery =
-    getProjectGallery(image);
-
-
-  /*
-   * If the project has no thumbnails,
-   * fall back to the image that was clicked.
-   */
-
-  if (currentGallery.length === 0) {
-
-    currentGallery = [
-      {
-        src: image.src,
-        alt: image.alt
-      }
-    ];
-
-  }
-
-
-  /*
-   * Find which screenshot is currently
-   * being displayed.
-   */
-
-  const currentSrc =
-    image.getAttribute("src");
-
-
-  const matchingIndex =
-    currentGallery.findIndex(
-      (item) =>
-        item.src === currentSrc
+    const currentSrc = image.getAttribute("src");
+    const matchingIndex = currentGallery.findIndex(
+        (item) => item.src === currentSrc
     );
 
+    currentImageIndex = matchingIndex >= 0 ? matchingIndex : 0;
 
-  currentImageIndex =
-    matchingIndex >= 0
-      ? matchingIndex
-      : 0;
+    updateLightboxImage();
+    lightbox.hidden = false;
 
+    document.body.style.overflow = "hidden";
 
-  updateLightboxImage();
-
-
-  /*
-   * Show lightbox.
-   */
-
-  lightbox.hidden = false;
-
-
-  /*
-   * Prevent the page behind the lightbox
-   * from scrolling.
-   */
-
-  document.body.style.overflow = "hidden";
-
-
-  /*
-   * Focus the close button for
-   * keyboard accessibility.
-   */
-
-  if (lightboxClose) {
-    lightboxClose.focus();
-  }
-
+    if (lightboxClose) {
+        lightboxClose.focus();
+    }
 }
-
 
 /* =========================================
    CLOSE LIGHTBOX
 ========================================= */
-
 function closeLightbox() {
+    if (!lightbox) {
+        return;
+    }
 
-  if (!lightbox) {
-    return;
-  }
+    lightbox.hidden = true;
 
+    if (lightboxImage) {
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+    }
 
-  lightbox.hidden = true;
+    if (lightboxCounter) {
+        lightboxCounter.textContent = "";
+    }
 
-
-  if (lightboxImage) {
-
-    lightboxImage.src = "";
-
-    lightboxImage.alt = "";
-
-  }
-
-
-  if (lightboxCounter) {
-    lightboxCounter.textContent = "";
-  }
-
-
-  /*
-   * Reset gallery state.
-   */
-
-  currentGallery = [];
-
-  currentImageIndex = 0;
-
-
-  /*
-   * Restore page scrolling.
-   */
-
-  document.body.style.overflow = "";
-
+    currentGallery = [];
+    currentImageIndex = 0;
+    document.body.style.overflow = "";
 }
-
 
 /* =========================================
    NEXT IMAGE
 ========================================= */
-
 function showNextImage() {
+    if (currentGallery.length <= 1) {
+        return;
+    }
 
-  if (currentGallery.length <= 1) {
-    return;
-  }
-
-
-  /*
-   * Move to the next image.
-   *
-   * The modulo operator makes the gallery
-   * loop back to the first screenshot.
-   */
-
-  currentImageIndex =
-    (currentImageIndex + 1) %
-    currentGallery.length;
-
-
-  updateLightboxImage();
-
+    currentImageIndex = (currentImageIndex + 1) % currentGallery.length;
+    updateLightboxImage();
 }
-
 
 /* =========================================
    PREVIOUS IMAGE
 ========================================= */
-
 function showPreviousImage() {
+    if (currentGallery.length <= 1) {
+        return;
+    }
 
-  if (currentGallery.length <= 1) {
-    return;
-  }
-
-
-  /*
-   * Move to the previous image.
-   *
-   * If we're at the first image,
-   * go back to the last image.
-   */
-
-  currentImageIndex =
-    (
-      currentImageIndex -
-      1 +
-      currentGallery.length
-    ) %
-    currentGallery.length;
-
-
-  updateLightboxImage();
-
+    currentImageIndex = (
+        currentImageIndex - 1 + currentGallery.length
+    ) % currentGallery.length;
+    updateLightboxImage();
 }
-
 
 /* =========================================
    CLICK MAIN PROJECT IMAGE
 ========================================= */
-
 mainProjectImages.forEach((image) => {
-
-  image.addEventListener(
-    "click",
-    () => {
-
-      openLightbox(image);
-
-    }
-  );
-
+    image.addEventListener(
+        "click", () => {
+            openLightbox(image);
+        }
+    );
 });
-
 
 /* =========================================
    NEXT BUTTON
 ========================================= */
-
 if (lightboxNext) {
-
-  lightboxNext.addEventListener(
-    "click",
-    (event) => {
-
-      /*
-       * Prevent the click from reaching
-       * the lightbox backdrop.
-       */
-
-      event.stopPropagation();
-
-      showNextImage();
-
-    }
-  );
-
+    lightboxNext.addEventListener(
+        "click", (event) => {
+            event.stopPropagation();
+            showNextImage();
+        }
+    );
 }
-
 
 /* =========================================
    PREVIOUS BUTTON
 ========================================= */
-
 if (lightboxPrev) {
-
-  lightboxPrev.addEventListener(
-    "click",
-    (event) => {
-
-      /*
-       * Prevent the click from reaching
-       * the lightbox backdrop.
-       */
-
-      event.stopPropagation();
-
-      showPreviousImage();
-
-    }
-  );
-
+    lightboxPrev.addEventListener(
+        "click", (event) => {
+            event.stopPropagation();
+            showPreviousImage();
+        }
+    );  
 }
-
 
 /* =========================================
    CLOSE BUTTON
 ========================================= */
-
 if (lightboxClose) {
-
-  lightboxClose.addEventListener(
-    "click",
-    (event) => {
-
-      event.stopPropagation();
-
-      closeLightbox();
-
-    }
-  );
-
+    lightboxClose.addEventListener(
+        "click", (event) => {
+            event.stopPropagation();
+            closeLightbox();
+        }
+    );
 }
-
 
 /* =========================================
    CLICK BACKDROP
 ========================================= */
-
 if (lightbox) {
-
-  lightbox.addEventListener(
-    "click",
-    (event) => {
-
-      /*
-       * Close only when clicking the dark
-       * background itself.
-       */
-
-      if (event.target === lightbox) {
-
-        closeLightbox();
-
-      }
-
-    }
-  );
-
+    lightbox.addEventListener(
+        "click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        }
+    );
 }
-
 
 /* =========================================
    KEYBOARD NAVIGATION
 ========================================= */
-
 document.addEventListener(
-  "keydown",
-  (event) => {
+    "keydown", (event) => {
+        if (
+            !lightbox || lightbox.hidden
+        ) {
+            return;
+        }
 
-    /*
-     * Don't do anything if the lightbox
-     * isn't open.
-     */
+        if (event.key === "Escape") {
+            closeLightbox();
+            return;
+        }
 
-    if (
-      !lightbox ||
-      lightbox.hidden
-    ) {
-      return;
+        if (event.key === "ArrowRight") {
+            event.preventDefault();
+            showNextImage();
+            return;
+        }
+
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            showPreviousImage();
+        }
     }
-
-
-    /* Escape = close */
-
-    if (event.key === "Escape") {
-
-      closeLightbox();
-
-      return;
-
-    }
-
-
-    /* ArrowRight = next */
-
-    if (event.key === "ArrowRight") {
-
-      event.preventDefault();
-
-      showNextImage();
-
-      return;
-
-    }
-
-
-    /* ArrowLeft = previous */
-
-    if (event.key === "ArrowLeft") {
-
-      event.preventDefault();
-
-      showPreviousImage();
-
-    }
-
-  }
 );
+
+/* =========================================
+   PROJECT FILTERING + PAGINATION
+========================================= */
+const projectsGrid = document.getElementById("projects-grid");
+const projectsPagination = document.getElementById("projects-pagination");
+const projectsPrev = document.getElementById("projects-prev");
+const projectsNext = document.getElementById("projects-next");
+const projectsPageNumbers = document.getElementById("projects-page-numbers");
+const projectFilters = document.querySelectorAll(".project-filter");
+const PROJECTS_PER_PAGE = 4;
+
+let currentProjectsPage = 1;
+let currentProjectFilter = "all";
+
+if (
+    projectsGrid &&
+    projectsPagination &&
+    projectsPrev &&
+    projectsNext &&
+    projectsPageNumbers
+) {
+
+    const projectCards = Array.from(
+        projectsGrid.querySelectorAll(".project-card")
+    );
+
+    /* =========================================
+       GET FILTERED PROJECTS
+    ========================================= */
+    function getFilteredProjects() {
+        if (currentProjectFilter === "all") {
+            return projectCards;
+        }
+        return projectCards.filter((card) => {
+            const languages =
+                card.dataset.languages
+                    ?.split(",")
+                    .map((language) => language.trim()) || [];
+            return languages.includes(
+                currentProjectFilter
+            );
+        });
+    }
+
+    /* =========================================
+       SHOW PROJECT PAGE
+    ========================================= */
+    function showProjectsPage(page, shouldScroll = true) {
+        const filteredProjects = getFilteredProjects();
+        const totalProjects = filteredProjects.length;
+        const totalPages = Math.ceil(
+            totalProjects /
+            PROJECTS_PER_PAGE
+        );
+
+        if (totalProjects === 0) {
+            projectCards.forEach((card) => {
+                card.hidden = true;
+            });
+            projectsPagination.hidden = true;
+            return;
+        }
+
+        currentProjectsPage = Math.max(
+            1, Math.min(
+                page, 
+                totalPages
+            )
+        );
+
+        const startIndex = (currentProjectsPage - 1) * PROJECTS_PER_PAGE;
+        const endIndex = startIndex + PROJECTS_PER_PAGE;
+
+        projectCards.forEach((card) => {
+            card.hidden = true;
+        });
+
+        filteredProjects.forEach(
+            (card, index) => {
+                const shouldShow = index >= startIndex && index < endIndex;
+                if (shouldShow) {
+                    card.hidden = false;
+                    card.style.animation = "none";
+                    void card.offsetWidth;
+                    card.style.animation = "fadeUp 0.6s ease both";
+                }
+            }
+        );
+        updatePagination(totalPages);
+        if (shouldScroll) {
+            const projectsSection = document.getElementById("projects");
+            if (projectsSection) {
+                projectsSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        }
+    }
+
+    /* =========================================
+       UPDATE PAGINATION
+    ========================================= */
+    function updatePagination(totalPages) {
+        projectsPageNumbers.innerHTML = "";
+        if (totalPages <= 1) {
+            projectsPagination.hidden = true;
+            return;
+        }
+
+        projectsPagination.hidden = false;
+        projectsPrev.disabled = currentProjectsPage === 1;
+        projectsNext.disabled = currentProjectsPage === totalPages;
+
+        for (
+            let page = 1;
+            page <= totalPages;
+            page++
+        ) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "pagination-page";
+            button.textContent = page;
+            button.setAttribute(
+                "aria-label",
+                `Go to projects page ${page}`
+            );
+            if (
+                page ===
+                currentProjectsPage
+            ) {
+                button.classList.add("active");
+                button.setAttribute(
+                    "aria-current",
+                    "page"
+                );
+            }
+            button.addEventListener(
+                "click", () => {
+                    showProjectsPage(page);
+                }
+            );
+            projectsPageNumbers.appendChild(
+                button
+            );
+        }
+    }
+
+    /* =========================================
+       FILTER PROJECTS
+    ========================================= */
+    projectFilters.forEach((filterButton) => {
+        filterButton.addEventListener(
+            "click", () => {
+                currentProjectFilter = filterButton.dataset.filter || "all";
+                currentProjectsPage = 1;
+                projectFilters.forEach(
+                    (button) => {
+                        const isActive = button === filterButton;
+                        button.classList.toggle(
+                            "active",
+                            isActive
+                        );
+                        button.setAttribute(
+                            "aria-pressed",
+                            String(isActive)
+                        );
+                    }
+                );
+                showProjectsPage(1);
+            }
+        );
+    });
+
+    /* =========================================
+       PREVIOUS PAGE
+    ========================================= */
+    projectsPrev.addEventListener(
+        "click", () => {
+            if (
+                currentProjectsPage > 1
+            ) {
+                showProjectsPage(
+                    currentProjectsPage - 1
+                );
+            }
+        }
+    );
+
+    /* =========================================
+       NEXT PAGE
+    ========================================= */
+    projectsNext.addEventListener(
+        "click", () => {
+            const filteredProjects = getFilteredProjects();
+            const totalPages = Math.ceil(
+                filteredProjects.length /
+                PROJECTS_PER_PAGE
+            );
+
+            if (
+                currentProjectsPage <
+                totalPages
+            ) {
+                showProjectsPage(
+                    currentProjectsPage + 1
+                );
+            }
+        }
+    );
+
+    /* =========================================
+       INITIALIZE
+    ========================================= */
+    showProjectsPage(
+        1,
+        false
+    );
+}

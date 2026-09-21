@@ -235,7 +235,86 @@
                 <p>A selection of projects demonstrating my development skills.</p>
             </div>
 
-            <div class="projects-grid">
+            <!-- PROJECT FILTERS -->
+            <div
+                class="project-filters"
+                id="project-filters"
+                aria-label="Filter projects by technology"
+            >
+                <button
+                    class="project-filter active"
+                    type="button"
+                    data-filter="all"
+                    aria-pressed="true"
+                >
+                    All
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="JavaScript"
+                    aria-pressed="false"
+                >
+                    JavaScript
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="HTML"
+                    aria-pressed="false"
+                >
+                    HTML
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="CSS"
+                    aria-pressed="false"
+                >
+                    CSS
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="Python"
+                    aria-pressed="false"
+                >
+                    Python
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="React"
+                    aria-pressed="false"
+                >
+                    React
+                </button>
+
+                <button
+                class="project-filter"
+                type="button"
+                data-filter="TypeScript"
+                aria-pressed="false"
+                >
+                    TypeScript
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="SQL"
+                    aria-pressed="false"
+                >
+                    SQL
+                </button>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
 
             <!-- PROJECT CARDS TEMPLATE -->
             <!--
@@ -284,7 +363,8 @@
 
             <!-- INSERT PROJECT CARDS HERE -->
 
-                <article class="project-card">
+                <!-- Expense Tracker -->
+                <article class="project-card" data-languages="JavaScript,Python,HTML,CSS">
                     <div class="project-gallery"> 
                         <!-- Main image --> 
                         <div class="project-main-image">
@@ -370,7 +450,8 @@
                     </div>
                 </article>
 
-                <article class="project-card">
+                <!-- Movie TV Discovery App -->
+                <article class="project-card" data-languages="React,JavaScript,HTML,CSS">
                     <div class="project-gallery"> 
                         <div class="project-main-image">
                             <button
@@ -464,7 +545,8 @@
                     </div>
                 </article>
 
-                <article class="project-card">
+                <!-- Task Management -->
+                <article class="project-card" data-languages="React,JavaScript,TypeScript,HTML,CSS">
                     <div class="project-gallery"> 
                         <div class="project-main-image">
                             <button
@@ -538,7 +620,8 @@
                     </div>
                 </article>
 
-                <article class="project-card">
+                <!-- Automated File Organizer -->
+                <article class="project-card" data-languages="Python">
                     <div class="project-gallery"> 
                         <div class="project-main-image">
                             <button
@@ -622,7 +705,8 @@
                     </div>
                 </article>
 
-                <article class="project-card">
+                <!-- Weather Dashboard -->
+                <article class="project-card" data-languages="JavaScript,HTML,CSS">
                     <div class="project-gallery"> 
                         <!-- Main image --> 
                         <div class="project-main-image">
@@ -708,7 +792,8 @@
                     </div>
                 </article>
 
-                <article class="project-card">
+                <!-- Restaurant / Café Website -->
+                <article class="project-card" data-languages="HTML,CSS,JavaScript">
                     <div class="project-gallery"> 
                         <!-- Main image --> 
                         <div class="project-main-image">
@@ -816,8 +901,40 @@
 
             </div>
 
+            <!-- Pagination -->
+            <nav
+                class="projects-pagination"
+                id="projects-pagination"
+                aria-label="Projects pagination"
+            >
+                <button
+                    id="projects-prev"
+                    class="pagination-button"
+                    type="button"
+                    aria-label="Previous projects page"
+                >
+                    ← Previous
+                </button>
+
+                <div
+                    id="projects-page-numbers"
+                    class="pagination-pages"
+                    aria-label="Project pages"
+                ></div>
+
+                <button
+                    id="projects-next"
+                    class="pagination-button"
+                    type="button"
+                    aria-label="Next projects page"
+                >
+                Next →
+                </button>
+            </nav>
+
         </section>
 
+        <!-- Contact -->
         <section class="section contact" id="contact" aria-labelledby="contact-title">
             <div class="contact-container">
                 <div class="section-heading">
