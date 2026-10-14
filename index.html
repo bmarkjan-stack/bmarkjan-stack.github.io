@@ -110,6 +110,1108 @@
             </div>
         </section>
 
+        <section class="section projects" id="projects" aria-labelledby="projects-title">
+            <div class="section-heading">
+                <p class="section-label">Projects</p>
+                <h2 id="projects-title">Things I've built</h2>
+                <p>A selection of projects demonstrating my development skills.</p>
+            </div>
+
+            <!-- PROJECT FILTERS -->
+            <div
+                class="project-filters"
+                id="project-filters"
+                aria-label="Filter projects by technology"
+            >
+                <button
+                    class="project-filter active"
+                    type="button"
+                    data-filter="all"
+                    aria-pressed="true"
+                >
+                    All
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="JavaScript"
+                    aria-pressed="false"
+                >
+                    JavaScript
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="HTML"
+                    aria-pressed="false"
+                >
+                    HTML
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="CSS"
+                    aria-pressed="false"
+                >
+                    CSS
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="Python"
+                    aria-pressed="false"
+                >
+                    Python
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="React"
+                    aria-pressed="false"
+                >
+                    React
+                </button>
+
+                <button
+                class="project-filter"
+                type="button"
+                data-filter="TypeScript"
+                aria-pressed="false"
+                >
+                    TypeScript
+                </button>
+
+                <button
+                    class="project-filter"
+                    type="button"
+                    data-filter="SQL"
+                    aria-pressed="false"
+                >
+                    SQL
+                </button>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+
+            <!-- PROJECT CARDS TEMPLATE -->
+            <!--
+                <article class="project-card">
+                    <div class="project-gallery"> 
+                        <div class="project-main-image"> 
+                            <img id="expense-tracker-main-image" src="images/p2-expense-tracker/p2-1.png" alt="Expense Tracker main screenshot" > 
+                        </div> 
+                        <div class="project-thumbnails"> 
+                            <button 
+                                class="thumbnail active" 
+                                type="button" 
+                                data-gallery="expense-tracker" 
+                                data-image="images/p2-expense-tracker/p2-1.png" 
+                                data-alt="Expense Tracker main screen" 
+                                aria-label="View Expense Tracker screenshot 1"
+                            > 
+                                <img src="images/p2-expense-tracker/p2-1.png" alt="" > 
+                            </button>
+                        </div> 
+                    </div> 
+                    <div class="project-content"> 
+                        <span class="project-type"> JavaScript </span> 
+                        <h3>Expense Tracker</h3> 
+                        <p> 
+                            A responsive website for tracking expenses and managing a personal budget. 
+                        </p> 
+                        <div class="project-tags"> 
+                            <span>JavaScript</span> 
+                            <span>HTML</span> 
+                            <span>CSS</span> 
+                        </div> 
+                        <div class="project-links"> 
+                            <a 
+                                href="https://github.com/bmarkjan-stack/p2-expense-tracker" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                aria-label="View Expense Tracker source code on GitHub" 
+                            > 
+                                GitHub ↗ 
+                            </a> 
+                        </div> 
+                    </div>
+                </article>
+            -->
+
+            <!-- INSERT PROJECT CARDS HERE -->
+
+                <!-- p11 Educational Quiz RPG -->
+                <article
+                    class="project-card"
+                    data-languages="JavaScript,HTML,CSS"
+                >
+                    <div class="project-gallery">
+                        <!-- Main image -->
+                        <div class="project-main-image">
+                            <button
+                                class="main-image-button"
+                                type="button"
+                                aria-label="Open LearnQuest live demo animation in full size"
+                            >
+                                <img
+                                    id="learnquest-main-image"
+                                    src="images/p11-educational-quiz-rpg/LearnQuest-live-demo.gif"
+                                    alt="Animated live demo of LearnQuest, an educational fantasy quiz RPG"
+                                    loading="lazy"
+                                    data-lightbox-single="true"
+                                >
+                            </button>
+                        </div>
+
+                        <!-- Thumbnails -->
+                        <div class="project-thumbnails" data-gallery-mode="lightbox">
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="learnquest"
+                                data-image="images/p11-educational-quiz-rpg/p11-1.png"
+                                data-alt="LearnQuest preload screen displayed while game assets load"
+                                aria-label="View LearnQuest loading screen"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p11-educational-quiz-rpg/p11-1.png"
+                                    alt="LearnQuest loading screen"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="learnquest"
+                                data-image="images/p11-educational-quiz-rpg/p11-2.png"
+                                data-alt="LearnQuest main menu with its fantasy RPG visual design"
+                                aria-label="View LearnQuest main menu"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p11-educational-quiz-rpg/p11-2.png"
+                                    alt="LearnQuest main menu"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="learnquest"
+                                data-image="images/p11-educational-quiz-rpg/p11-3.png"
+                                data-alt="LearnQuest settings screen with music, sound effects, and display options"
+                                aria-label="View LearnQuest settings screen"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p11-educational-quiz-rpg/p11-3.png"
+                                    alt="LearnQuest settings screen"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="learnquest"
+                                data-image="images/p11-educational-quiz-rpg/p11-4.png"
+                                data-alt="LearnQuest character creation screen for choosing a hero and entering a name"
+                                aria-label="View LearnQuest character creation screen"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p11-educational-quiz-rpg/p11-4.png"
+                                    alt="LearnQuest character creation screen"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="learnquest"
+                                data-image="images/p11-educational-quiz-rpg/p11-5.png"
+                                data-alt="LearnQuest lesson selection screen showing frontend and backend learning pathways"
+                                aria-label="View LearnQuest lesson selection and learning pathways"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p11-educational-quiz-rpg/p11-5.png"
+                                    alt="LearnQuest lesson selection screen"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="learnquest"
+                                data-image="images/p11-educational-quiz-rpg/p11-6.png"
+                                data-alt="LearnQuest Python fundamentals lesson with instructional content"
+                                aria-label="View LearnQuest Python lesson screen"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p11-educational-quiz-rpg/p11-6.png"
+                                    alt="LearnQuest Python fundamentals lesson"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="learnquest"
+                                data-image="images/p11-educational-quiz-rpg/p11-7.png"
+                                data-alt="LearnQuest turn-based quiz battle where players answer questions to damage an enemy"
+                                aria-label="View LearnQuest quiz battle screen"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p11-educational-quiz-rpg/p11-7.png"
+                                    alt="LearnQuest quiz battle screen"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="learnquest"
+                                data-image="images/p11-educational-quiz-rpg/p11-8.png"
+                                data-alt="LearnQuest victory screen after successfully completing a battle"
+                                aria-label="View LearnQuest victory screen"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p11-educational-quiz-rpg/p11-8.png"
+                                    alt="LearnQuest victory screen"
+                                    loading="lazy"
+                                >
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <span class="project-type">JavaScript Game Development</span>
+
+                        <h3>LearnQuest — Educational Quiz RPG</h3>
+
+                        <p>
+                            A fantasy RPG that turns web development and database learning into
+                            interactive lessons, quiz battles, and boss fights. Built with Phaser 3
+                            and JavaScript, it features frontend and backend learning paths,
+                            character creation, experience and leveling systems, saved progress,
+                            and a full-stack capstone exam. Runs in the browser and as a desktop
+                            application powered by Electron.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>JavaScript</span>
+                            <span>Phaser 3</span>
+                            <span>Vite</span>
+                            <span>Game Development</span>
+                            <span>Educational RPG</span>
+                            <span>Data-Driven Content</span>
+                            <span>Electron</span>
+                            <span>Automated Testing</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/bmarkjan-stack/p11-educational-quiz-rpg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="View LearnQuest source code and README on GitHub"
+                            >
+                                GitHub ↗
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- p4 Task Management Dashboard -->
+                <article
+                    class="project-card"
+                    data-languages="React,JavaScript,TypeScript,HTML,CSS"
+                >
+                    <div class="project-gallery">
+                        <!-- Main image -->
+                        <div class="project-main-image">
+                            <button
+                                class="main-image-button"
+                                type="button"
+                                aria-label="Open TaskFlow dashboard  live demo animation in full size"
+                            >
+                                <img
+                                    id="task-management-dashboard-main-image"
+                                    src="images/p4-task-management-dashboard/task-management-dashboard-live-demo.gif"
+                                    alt="Animated live demo of the TaskFlow dashboard"
+                                    loading="lazy"
+                                    data-lightbox-single="true"
+                                >
+                            </button>
+                        </div>
+
+                        <!-- Thumbnails -->
+                        <div class="project-thumbnails" data-gallery-mode="lightbox">
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="task-management-dashboard"
+                                data-image="images/p4-task-management-dashboard/p4-1.png"
+                                data-alt="TaskFlow dashboard displaying newly created board"
+                                aria-label="View TaskFlow dashboard screenshot"
+                                aria-pressed="true"
+                            >
+                                <img
+                                    src="images/p4-task-management-dashboard/p4-1.png"
+                                    alt="TaskFlow dashboard displaying newly created board"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="task-management-dashboard"
+                                data-image="images/p4-task-management-dashboard/p4-2.png"
+                                data-alt="TaskFlow dashboard showing task management and drag-and-drop features"
+                                aria-label="View TaskFlow task management screenshot"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p4-task-management-dashboard/p4-2.png"
+                                    alt="TaskFlow dashboard showing task management and drag-and-drop features"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="task-management-dashboard"
+                                data-image="images/p4-task-management-dashboard/p4-3.png"
+                                data-alt="TaskFlow dashboard showing the task management interface"
+                                aria-label="View TaskFlow additional dashboard screenshot"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p4-task-management-dashboard/p4-3.png"
+                                    alt="TaskFlow dashboard showing the task management interface"
+                                    loading="lazy"
+                                >
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <span class="project-type">React & TypeScript</span>
+
+                        <h3>TaskFlow — Task Management Dashboard</h3>
+
+                        <p>
+                            A responsive task management application built with React,
+                            TypeScript, and Vite. Organize work across multiple boards,
+                            manage tasks with accessible drag-and-drop controls, and
+                            track progress using status columns, priority levels, due
+                            dates, search, filtering, and sorting. Includes persistent
+                            browser storage, task deletion with undo, automated tests,
+                            and an optional Express API for server-side data storage.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>React 19</span>
+                            <span>TypeScript</span>
+                            <span>State Management</span>
+                            <span>Drag and Drop</span>
+                            <span>REST API</span>
+                            <span>Automated Testing</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/bmarkjan-stack/p4-task-management-dashboard"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="View TaskFlow source code on GitHub"
+                            >
+                                GitHub ↗
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- p7 Automated File Organizer -->
+                <article 
+                    class="project-card" 
+                    data-languages="Python"
+                >
+                    <div class="project-gallery">
+                        <!-- Main image -->
+                        <div class="project-main-image">
+                            <button
+                                class="main-image-button"
+                                type="button"
+                                aria-label="Open Automated File Organizer live demo animation in full size"
+                            >
+                                <img
+                                    id="automated-file-organizer-main-image"
+                                    src="images/p7-automated-file-organizer/file-organizer-live-demo.gif"
+                                    alt="Live demo animation of Python Automated File Organizer"
+                                    loading="lazy"
+                                    data-lightbox-single="true"
+                                >
+                            </button>
+                        </div>
+
+                        <!-- Thumbnails -->
+                        <div class="project-thumbnails" data-gallery-mode="lightbox">
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="automated-file-organizer"
+                                data-image="images/p7-automated-file-organizer/p7-1.png"
+                                data-alt="Automated File Organizer main desktop interface"
+                                aria-label="View Automated File Organizer main desktop interface"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p7-automated-file-organizer/p7-1.png"
+                                    alt="Automated File Organizer main desktop interface"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="automated-file-organizer"
+                                data-image="images/p7-automated-file-organizer/p7-2.png"
+                                data-alt="Automated File Organizer showing test file organization in progress"
+                                aria-label="View Automated File Organizer test file organization in progress"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p7-automated-file-organizer/p7-2.png"
+                                    alt="Automated File Organizer showing test file organization in progress"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="automated-file-organizer"
+                                data-image="images/p7-automated-file-organizer/p7-3.png"
+                                data-alt="Automated File Organizer showing file organization results"
+                                aria-label="View Automated File Organizer showing file organization results"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p7-automated-file-organizer/p7-3.png"
+                                    alt="Automated File Organizer showing file organization results"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="automated-file-organizer"
+                                data-image="images/p7-automated-file-organizer/p7-4.png"
+                                data-alt="Automated File Organizer showing flexible configuration options"
+                                aria-label="View Automated File Organizer flexible configuration options"
+                                aria-pressed="false"
+                            >
+                                <img
+                                    src="images/p7-automated-file-organizer/p7-4.png"
+                                    alt="Automated File Organizer showing flexible configuration options"
+                                    loading="lazy"
+                                >
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <span class="project-type">Python Desktop Application</span>
+
+                        <h3>Automated File Organizer</h3>
+
+                        <p>
+                            A Python file-management application with a Tkinter desktop
+                            interface and command-line support. Automatically organize
+                            files by extension, modification date, or size, with
+                            configurable categories, duplicate detection, dry-run
+                            previews, undo support, and background watch mode. Includes
+                            automated tests and a GitHub Actions release workflow for
+                            packaging Windows executables.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>Tkinter GUI</span>
+                            <span>CLI Automation</span>
+                            <span>File System Operations</span>
+                            <span>Pytest</span>
+                            <span>GitHub Actions</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/bmarkjan-stack/p7-automated-file-organizer"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="View Automated File Organizer source code on GitHub"
+                            >
+                                GitHub ↗
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- p3 Weather Dashboard -->
+                <article 
+                    class="project-card" 
+                    data-languages="JavaScript,HTML,CSS"
+                >
+                    <div class="project-gallery">
+                        <!-- Main image -->
+                        <div class="project-main-image">
+                            <button
+                                class="main-image-button"
+                                type="button"
+                                aria-label="Open Weather Dashboard live demo animation in full size"
+                            >
+                                <img
+                                    id="weather-dashboard-main-image"
+                                    src="images/p3-weather-dashboard/weather-dashboard-live-demo.gif"
+                                    alt="Animated live demo of the Weather Dashboard"
+                                    loading="lazy"
+                                    data-lightbox-single="true"
+                                >
+                            </button>
+                        </div>
+
+                        <!-- Thumbnails -->
+                        <div class="project-thumbnails" data-gallery-mode="lightbox">
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="weather-dashboard"
+                                data-image="images/p3-weather-dashboard/p3-1.1.png"
+                                data-alt="Current weather conditions and weather details in Bulacan, Philippines"
+                                aria-label="View Bulacan current weather screenshot"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p3-weather-dashboard/p3-1.1.png" 
+                                    alt="Current weather conditions and weather details in Bulacan, Philippines" 
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="weather-dashboard"
+                                data-image="images/p3-weather-dashboard/p3-1.2.png"
+                                data-alt="Hourly forecast, temperature trend chart, and five-day forecast in Bulacan, Philippines"
+                                aria-label="View Bulacan hourly forecast and temperature chart screenshot"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p3-weather-dashboard/p3-1.2.png" 
+                                    alt="Hourly forecast, temperature trend chart, and five-day forecast in Bulacan, Philippines"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="weather-dashboard"
+                                data-image="images/p3-weather-dashboard/p3-2.1.png"
+                                data-alt="Current weather conditions in Los Angeles, United States"
+                                aria-label="View Los Angeles weather screenshot"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p3-weather-dashboard/p3-2.1.png" 
+                                    alt="Current weather conditions in Los Angeles, United States"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="weather-dashboard"
+                                data-image="images/p3-weather-dashboard/p3-2.2.png"
+                                data-alt="Hourly forecast, temperature trend chart, and five-day forecast in Los Angeles, United States"
+                                aria-label="View Los Angeles hourly forecast and temperature chart screenshot"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p3-weather-dashboard/p3-2.2.png" 
+                                    alt="Hourly forecast, temperature trend chart, and five-day forecast in Los Angeles, United States"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="weather-dashboard"
+                                data-image="images/p3-weather-dashboard/p3-1.1.png"
+                                data-alt="Current weather conditions in Tokyo, Japan"
+                                aria-label="View Tokyo weather screenshot"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p3-weather-dashboard/p3-1.1.png" 
+                                    alt="Current weather conditions in Tokyo, Japan"
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="weather-dashboard"
+                                data-image="images/p3-weather-dashboard/p3-3.2.png"
+                                data-alt="Hourly forecast, temperature trend chart, and five-day forecast for Tokyo, Japan"
+                                aria-label="View Tokyo forecast screenshot"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p3-weather-dashboard/p3-3.2.png" 
+                                    alt="Hourly forecast, temperature trend chart, and five-day forecast for Tokyo, Japan"
+                                    loading="lazy"
+                                >
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <span class="project-type">JavaScript</span>
+
+                        <h3>Weather Dashboard</h3>
+
+                        <p>
+                            A responsive, installable weather dashboard built with
+                            vanilla JavaScript and the Open-Meteo API. Search cities
+                            worldwide to explore current conditions, a 24-hour forecast,
+                            interactive temperature trends, and a five-day forecast.
+                            Includes location-based weather, dark mode, recent searches,
+                            and offline support through Progressive Web App (PWA)
+                            features.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>JavaScript</span>
+                            <span>REST APIs</span>
+                            <span>Async/Await</span>
+                            <span>Data Visualization</span>
+                            <span>PWA</span>
+                            <span>Responsive Design</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/bmarkjan-stack/p3-weather-dashboard"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="View Weather Dashboard source code on GitHub"
+                            >
+                                GitHub ↗
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- p1 Restaurant / Café Website -->
+                <article 
+                    class="project-card" 
+                    data-languages="HTML,CSS,JavaScript"
+                >
+                    <div class="project-gallery">
+                        <!-- Main image -->
+                        <div class="project-main-image">
+                            <button
+                                class="main-image-button"
+                                type="button"
+                                aria-label="Open Luna Café website live demo animation in full size"
+                            >
+                                <img
+                                    id="cafe-main-image"
+                                    src="images/p1-restaurant-cafe-website/luna-cafe-live-demo.gif"
+                                    alt="Luna Café homepage featuring the restaurant's branding and hero section"
+                                    loading="lazy"
+                                    data-lightbox-single="true"
+                                >
+                            </button>
+                        </div>
+
+                        <!-- Thumbnails -->
+                        <div class="project-thumbnails" data-gallery-mode="lightbox">
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="cafe"
+                                data-image="images/p1-restaurant-cafe-website/p1-1.png"
+                                data-alt="Luna Café homepage with a restaurant hero section"
+                                aria-label="View Luna Café homepage screenshot"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p1-restaurant-cafe-website/p1-1.png" 
+                                    alt="Luna Café homepage with a restaurant hero section" 
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="cafe"
+                                data-image="images/p1-restaurant-cafe-website/p1-2.png"
+                                data-alt="Luna Café menu section with category filters for brunch, coffee, and desserts"
+                                aria-label="View Luna Café menu and category filters"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p1-restaurant-cafe-website/p1-2.png" 
+                                    alt="Luna Café menu section with category filters for brunch, coffee, and desserts" 
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="cafe"
+                                data-image="images/p1-restaurant-cafe-website/p1-3.png"
+                                data-alt="Luna Café interactive website section"
+                                aria-label="View Luna Café website interaction screenshot"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p1-restaurant-cafe-website/p1-3.png" 
+                                    alt="Luna Café interactive website section" 
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="cafe"
+                                data-image="images/p1-restaurant-cafe-website/p1-4.png"
+                                data-alt="Luna Café reservation form for requesting a table"
+                                aria-label="View Luna Café reservation form"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p1-restaurant-cafe-website/p1-4.png" 
+                                    alt="Luna Café reservation form for requesting a table" 
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="cafe"
+                                data-image="images/p1-restaurant-cafe-website/p1-5.png"
+                                data-alt="Luna Café location and contact information section"
+                                aria-label="View Luna Café location and contact information"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p1-restaurant-cafe-website/p1-5.png" 
+                                    alt="Luna Café location and contact information section" 
+                                    loading="lazy"
+                                >
+                            </button>
+
+                            <button
+                                class="thumbnail"
+                                type="button"
+                                data-gallery="cafe"
+                                data-image="images/p1-restaurant-cafe-website/p1-6.png"
+                                data-alt="Luna Café website footer and newsletter sign-up form"
+                                aria-label="View Luna Café footer and newsletter form"
+                                aria-pressed="false"
+                            >
+                                <img 
+                                    src="images/p1-restaurant-cafe-website/p1-6.png" 
+                                    alt="Luna Café website footer and newsletter sign-up form" 
+                                    loading="lazy"
+                                >
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <span class="project-type">Responsive Front-End Website</span>
+
+                        <h3>Luna Café — Restaurant &amp; Café Website</h3>
+
+                        <p>
+                            A responsive website for a fictional specialty coffee and brunch restaurant,
+                            built with HTML, CSS, and vanilla JavaScript. Features interactive menu
+                            filtering, mobile navigation, a photo gallery, scroll-based animations,
+                            and client-side reservation and newsletter form validation.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Responsive Design</span>
+                            <span>DOM Manipulation</span>
+                            <span>Accessibility</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a
+                                href="https://github.com/bmarkjan-stack/p1-restaurant-cafe-website"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="View Luna Café source code and README on GitHub"
+                            >
+                                GitHub ↗
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- p2 Expense Tracker -->
+                <article class="project-card" data-languages="JavaScript,Python,HTML,CSS">
+                    <div class="project-gallery"> 
+                        <!-- Main image --> 
+                        <div class="project-main-image">
+                            <button
+                                class="main-image-button"
+                                type="button"
+                                aria-label="Open Expense Tracker screenshot in full size"
+                                data-image="images/p2-expense-tracker/p2-1.png"
+                                data-alt="Expense Tracker main screenshot"
+                            >
+                                <img
+                                    id="expense-tracker-main-image"
+                                    src="images/p2-expense-tracker/p2-1.png"
+                                    alt="Expense Tracker main screenshot"
+                                >
+                            </button>
+                        </div>
+                        <!-- Thumbnails --> 
+                        <div class="project-thumbnails"> 
+                            <button 
+                                class="thumbnail active" 
+                                type="button" 
+                                data-gallery="expense-tracker" 
+                                data-image="images/p2-expense-tracker/p2-1.png" 
+                                data-alt="Expense Tracker main screen" 
+                                aria-label="View Expense Tracker screenshot 1"
+                            > 
+                                <img src="images/p2-expense-tracker/p2-1.png" alt="" > 
+                            </button>
+                            <button 
+                                class="thumbnail" 
+                                type="button" 
+                                data-gallery="expense-tracker" 
+                                data-image="images/p2-expense-tracker/p2-2.png" 
+                                data-alt="Expense Tracker main screen" 
+                                aria-label="View Expense Tracker screenshot 2"
+                            > 
+                                <img src="images/p2-expense-tracker/p2-2.png" alt="" > 
+                            </button>
+                            <button 
+                                class="thumbnail" 
+                                type="button" 
+                                data-gallery="expense-tracker" 
+                                data-image="images/p2-expense-tracker/p2-3.png" 
+                                data-alt="Expense Tracker main screen" 
+                                aria-label="View Expense Tracker screenshot 3"
+                            > 
+                                <img src="images/p2-expense-tracker/p2-3.png" alt="" > 
+                            </button>
+                        </div> 
+                    </div> 
+                    <div class="project-content"> 
+                        <span class="project-type"> JavaScript / Python </span> 
+                        <h3>Expense Tracker</h3> 
+                        <p> 
+                            A full-stack responsive website that helps you track expenses and manage a personal budget. 
+                            This project demonstrates backend development, REST API architecture, authentication, database integration, input validation, error handling, and automated testing.
+                        </p> 
+                        <div class="project-tags"> 
+                            <span>JavaScript</span> 
+                            <span>Python</span> 
+                            <span>State Management</span> 
+                            <span>CRUD</span> 
+                        </div> 
+                        <div class="project-links"> 
+                            <a 
+                                href="https://github.com/bmarkjan-stack/p2-expense-tracker" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                aria-label="View Expense Tracker Frontend source code on GitHub" 
+                            > 
+                                GitHub Frontend ↗
+                            </a>
+                            <a 
+                                href="https://github.com/bmarkjan-stack/p6-personal-finance-REST-API" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                aria-label="View Expense Tracker Backend source code on GitHub" 
+                            > 
+                                GitHub Backend ↗ 
+                            </a> 
+                        </div> 
+                    </div>
+                </article>
+
+                <!-- p5 Movie TV Discovery App -->
+                <article class="project-card" data-languages="React,JavaScript,HTML,CSS">
+                    <div class="project-gallery"> 
+                        <div class="project-main-image">
+                            <button
+                                class="main-image-button"
+                                type="button"
+                                aria-label="Open Movie/Tv Discovery App screenshot in full size"
+                                data-image="images/p5-movie-TV-discovery-app/p5-1.png"
+                                data-alt="Movie/Tv Discovery App main screenshot"
+                            >
+                                <img
+                                    id="movie-tv-discovery-app-main-image"
+                                    src="images/p5-movie-TV-discovery-app/p5-1.png"
+                                    alt="Movie/Tv Discovery App main screenshot"
+                                >
+                            </button>
+                        </div>
+                        <div class="project-thumbnails"> 
+                            <button 
+                                class="thumbnail active" 
+                                type="button" 
+                                data-gallery="movie-tv-discovery-app" 
+                                data-image="images/p5-movie-TV-discovery-app/p5-1.png" 
+                                data-alt="Movie/Tv Discovery App main screen" 
+                                aria-label="View Movie/Tv Discovery App screenshot 1"
+                            > 
+                                <img src="images/p5-movie-TV-discovery-app/p5-1.png" alt="" > 
+                            </button>
+                            <button 
+                                class="thumbnail" 
+                                type="button" 
+                                data-gallery="movie-tv-discovery-app" 
+                                data-image="images/p5-movie-TV-discovery-app/p5-2.png" 
+                                data-alt="Movie/Tv Discovery App main screen" 
+                                aria-label="View Movie/Tv Discovery App screenshot 2"
+                            > 
+                                <img src="images/p5-movie-TV-discovery-app/p5-2.png" alt="" > 
+                            </button>
+                            <button 
+                                class="thumbnail" 
+                                type="button" 
+                                data-gallery="movie-tv-discovery-app" 
+                                data-image="images/p5-movie-TV-discovery-app/p5-3.png" 
+                                data-alt="Movie/Tv Discovery App main screen" 
+                                aria-label="View Movie/Tv Discovery App screenshot 3"
+                            > 
+                                <img src="images/p5-movie-TV-discovery-app/p5-3.png" alt="" > 
+                            </button>
+                            <button 
+                                class="thumbnail" 
+                                type="button" 
+                                data-gallery="movie-tv-discovery-app" 
+                                data-image="images/p5-movie-TV-discovery-app/p5-4.png" 
+                                data-alt="Movie/Tv Discovery App main screen" 
+                                aria-label="View Movie/Tv Discovery App screenshot 4"
+                            > 
+                                <img src="images/p5-movie-TV-discovery-app/p5-4.png" alt="" > 
+                            </button>
+                            <button 
+                                class="thumbnail" 
+                                type="button" 
+                                data-gallery="movie-tv-discovery-app" 
+                                data-image="images/p5-movie-TV-discovery-app/p5-5.png" 
+                                data-alt="Movie/Tv Discovery App main screen" 
+                                aria-label="View Movie/Tv Discovery App screenshot 5"
+                            > 
+                                <img src="images/p5-movie-TV-discovery-app/p5-5.png" alt="" > 
+                            </button>
+                        </div> 
+                    </div> 
+                    <div class="project-content"> 
+                        <span class="project-type"> React </span> 
+                        <h3>Movie/Tv Discovery App</h3> 
+                        <p> 
+                            A responsive website for discovering movies and TV shows. 
+                        </p> 
+                        <div class="project-tags"> 
+                            <span>React</span> 
+                            <span>JavaScript</span> 
+                            <span>API Integration</span> 
+                        </div> 
+                        <div class="project-links"> 
+                            <a 
+                                href="https://github.com/bmarkjan-stack/p5-movie-tv-discovery-app" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                aria-label="View Movie/Tv Discovery App source code on GitHub" 
+                            > 
+                                GitHub ↗ 
+                            </a> 
+                        </div> 
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Pagination -->
+            <nav
+                class="projects-pagination"
+                id="projects-pagination"
+                aria-label="Projects pagination"
+            >
+                <button
+                    id="projects-prev"
+                    class="pagination-button"
+                    type="button"
+                    aria-label="Previous projects page"
+                >
+                    ← Previous
+                </button>
+
+                <div
+                    id="projects-page-numbers"
+                    class="pagination-pages"
+                    aria-label="Project pages"
+                ></div>
+
+                <button
+                    id="projects-next"
+                    class="pagination-button"
+                    type="button"
+                    aria-label="Next projects page"
+                >
+                Next →
+                </button>
+            </nav>
+
+        </section>
+
         <section class="section skills-section" id="skills" aria-labelledby="skills-title">
             <div class="section-heading">
                 <p class="section-label">Skills</p>
@@ -226,712 +1328,6 @@
                     </div>
                 </article>
             </div>
-        </section>
-
-        <section class="section projects" id="projects" aria-labelledby="projects-title">
-            <div class="section-heading">
-                <p class="section-label">Projects</p>
-                <h2 id="projects-title">Things I've built</h2>
-                <p>A selection of projects demonstrating my development skills.</p>
-            </div>
-
-            <!-- PROJECT FILTERS -->
-            <div
-                class="project-filters"
-                id="project-filters"
-                aria-label="Filter projects by technology"
-            >
-                <button
-                    class="project-filter active"
-                    type="button"
-                    data-filter="all"
-                    aria-pressed="true"
-                >
-                    All
-                </button>
-
-                <button
-                    class="project-filter"
-                    type="button"
-                    data-filter="JavaScript"
-                    aria-pressed="false"
-                >
-                    JavaScript
-                </button>
-
-                <button
-                    class="project-filter"
-                    type="button"
-                    data-filter="HTML"
-                    aria-pressed="false"
-                >
-                    HTML
-                </button>
-
-                <button
-                    class="project-filter"
-                    type="button"
-                    data-filter="CSS"
-                    aria-pressed="false"
-                >
-                    CSS
-                </button>
-
-                <button
-                    class="project-filter"
-                    type="button"
-                    data-filter="Python"
-                    aria-pressed="false"
-                >
-                    Python
-                </button>
-
-                <button
-                    class="project-filter"
-                    type="button"
-                    data-filter="React"
-                    aria-pressed="false"
-                >
-                    React
-                </button>
-
-                <button
-                class="project-filter"
-                type="button"
-                data-filter="TypeScript"
-                aria-pressed="false"
-                >
-                    TypeScript
-                </button>
-
-                <button
-                    class="project-filter"
-                    type="button"
-                    data-filter="SQL"
-                    aria-pressed="false"
-                >
-                    SQL
-                </button>
-            </div>
-
-            <div class="projects-grid" id="projects-grid">
-
-            <!-- PROJECT CARDS TEMPLATE -->
-            <!--
-                <article class="project-card">
-                    <div class="project-gallery"> 
-                        <div class="project-main-image"> 
-                            <img id="expense-tracker-main-image" src="images/p2-1.png" alt="Expense Tracker main screenshot" > 
-                        </div> 
-                        <div class="project-thumbnails"> 
-                            <button 
-                                class="thumbnail active" 
-                                type="button" 
-                                data-gallery="expense-tracker" 
-                                data-image="images/p2-1.png" 
-                                data-alt="Expense Tracker main screen" 
-                                aria-label="View Expense Tracker screenshot 1"
-                            > 
-                                <img src="images/p2-1.png" alt="" > 
-                            </button>
-                        </div> 
-                    </div> 
-                    <div class="project-content"> 
-                        <span class="project-type"> JavaScript </span> 
-                        <h3>Expense Tracker</h3> 
-                        <p> 
-                            A responsive website for tracking expenses and managing a personal budget. 
-                        </p> 
-                        <div class="project-tags"> 
-                            <span>JavaScript</span> 
-                            <span>HTML</span> 
-                            <span>CSS</span> 
-                        </div> 
-                        <div class="project-links"> 
-                            <a 
-                                href="https://github.com/bmarkjan-stack/p2-expense-tracker" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="View Expense Tracker source code on GitHub" 
-                            > 
-                                GitHub ↗ 
-                            </a> 
-                        </div> 
-                    </div>
-                </article>
-            -->
-
-            <!-- INSERT PROJECT CARDS HERE -->
-
-                <!-- Expense Tracker -->
-                <article class="project-card" data-languages="JavaScript,Python,HTML,CSS">
-                    <div class="project-gallery"> 
-                        <!-- Main image --> 
-                        <div class="project-main-image">
-                            <button
-                                class="main-image-button"
-                                type="button"
-                                aria-label="Open Expense Tracker screenshot in full size"
-                                data-image="images/p2-1.png"
-                                data-alt="Expense Tracker main screenshot"
-                            >
-                                <img
-                                    id="expense-tracker-main-image"
-                                    src="images/p2-1.png"
-                                    alt="Expense Tracker main screenshot"
-                                >
-                            </button>
-                        </div>
-                        <!-- Thumbnails --> 
-                        <div class="project-thumbnails"> 
-                            <button 
-                                class="thumbnail active" 
-                                type="button" 
-                                data-gallery="expense-tracker" 
-                                data-image="images/p2-1.png" 
-                                data-alt="Expense Tracker main screen" 
-                                aria-label="View Expense Tracker screenshot 1"
-                            > 
-                                <img src="images/p2-1.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="expense-tracker" 
-                                data-image="images/p2-2.png" 
-                                data-alt="Expense Tracker main screen" 
-                                aria-label="View Expense Tracker screenshot 2"
-                            > 
-                                <img src="images/p2-2.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="expense-tracker" 
-                                data-image="images/p2-3.png" 
-                                data-alt="Expense Tracker main screen" 
-                                aria-label="View Expense Tracker screenshot 3"
-                            > 
-                                <img src="images/p2-3.png" alt="" > 
-                            </button>
-                        </div> 
-                    </div> 
-                    <div class="project-content"> 
-                        <span class="project-type"> JavaScript / Python </span> 
-                        <h3>Expense Tracker</h3> 
-                        <p> 
-                            A full-stack responsive website that helps you track expenses and manage a personal budget. 
-                            This project demonstrates backend development, REST API architecture, authentication, database integration, input validation, error handling, and automated testing.
-                        </p> 
-                        <div class="project-tags"> 
-                            <span>JavaScript</span> 
-                            <span>Python</span> 
-                            <span>State Management</span> 
-                            <span>CRUD</span> 
-                        </div> 
-                        <div class="project-links"> 
-                            <a 
-                                href="https://github.com/bmarkjan-stack/p2-expense-tracker" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="View Expense Tracker Frontend source code on GitHub" 
-                            > 
-                                GitHub Frontend ↗
-                            </a>
-                            <a 
-                                href="https://github.com/bmarkjan-stack/p6-personal-finance-REST-API" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="View Expense Tracker Backend source code on GitHub" 
-                            > 
-                                GitHub Backend ↗ 
-                            </a> 
-                        </div> 
-                    </div>
-                </article>
-
-                <!-- Movie TV Discovery App -->
-                <article class="project-card" data-languages="React,JavaScript,HTML,CSS">
-                    <div class="project-gallery"> 
-                        <div class="project-main-image">
-                            <button
-                                class="main-image-button"
-                                type="button"
-                                aria-label="Open Movie/Tv Discovery App screenshot in full size"
-                                data-image="images/p5-1.png"
-                                data-alt="Movie/Tv Discovery App main screenshot"
-                            >
-                                <img
-                                    id="movie-tv-discovery-app-main-image"
-                                    src="images/p5-1.png"
-                                    alt="Movie/Tv Discovery App main screenshot"
-                                >
-                            </button>
-                        </div>
-                        <div class="project-thumbnails"> 
-                            <button 
-                                class="thumbnail active" 
-                                type="button" 
-                                data-gallery="movie-tv-discovery-app" 
-                                data-image="images/p5-1.png" 
-                                data-alt="Movie/Tv Discovery App main screen" 
-                                aria-label="View Movie/Tv Discovery App screenshot 1"
-                            > 
-                                <img src="images/p5-1.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="movie-tv-discovery-app" 
-                                data-image="images/p5-2.png" 
-                                data-alt="Movie/Tv Discovery App main screen" 
-                                aria-label="View Movie/Tv Discovery App screenshot 2"
-                            > 
-                                <img src="images/p5-2.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="movie-tv-discovery-app" 
-                                data-image="images/p5-3.png" 
-                                data-alt="Movie/Tv Discovery App main screen" 
-                                aria-label="View Movie/Tv Discovery App screenshot 3"
-                            > 
-                                <img src="images/p5-3.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="movie-tv-discovery-app" 
-                                data-image="images/p5-4.png" 
-                                data-alt="Movie/Tv Discovery App main screen" 
-                                aria-label="View Movie/Tv Discovery App screenshot 4"
-                            > 
-                                <img src="images/p5-4.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="movie-tv-discovery-app" 
-                                data-image="images/p5-5.png" 
-                                data-alt="Movie/Tv Discovery App main screen" 
-                                aria-label="View Movie/Tv Discovery App screenshot 5"
-                            > 
-                                <img src="images/p5-5.png" alt="" > 
-                            </button>
-                        </div> 
-                    </div> 
-                    <div class="project-content"> 
-                        <span class="project-type"> React </span> 
-                        <h3>Movie/Tv Discovery App</h3> 
-                        <p> 
-                            A responsive website for discovering movies and TV shows. 
-                        </p> 
-                        <div class="project-tags"> 
-                            <span>React</span> 
-                            <span>JavaScript</span> 
-                            <span>API Integration</span> 
-                        </div> 
-                        <div class="project-links"> 
-                            <a 
-                                href="https://github.com/bmarkjan-stack/p5-movie-tv-discovery-app" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="View Movie/Tv Discovery App source code on GitHub" 
-                            > 
-                                GitHub ↗ 
-                            </a> 
-                        </div> 
-                    </div>
-                </article>
-
-                <!-- Task Management -->
-                <article class="project-card" data-languages="React,JavaScript,TypeScript,HTML,CSS">
-                    <div class="project-gallery"> 
-                        <div class="project-main-image">
-                            <button
-                                class="main-image-button"
-                                type="button"
-                                aria-label="Open Task Management Dashboard screenshot in full size"
-                                data-image="images/p4-1.png"
-                                data-alt="Task Management Dashboard main screenshot"
-                            >
-                                <img
-                                    id="task-management-dashboard-main-image"
-                                    src="images/p4-1.png"
-                                    alt="Task Management Dashboard main screenshot"
-                                >
-                            </button>
-                        </div>
-                        <div class="project-thumbnails"> 
-                            <button 
-                                class="thumbnail active" 
-                                type="button" 
-                                data-gallery="task-management-dashboard" 
-                                data-image="images/p4-1.png" 
-                                data-alt="Task Management Dashboard main screen" 
-                                aria-label="View Task Management Dashboard screenshot 1"
-                            > 
-                                <img src="images/p4-1.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="task-management-dashboard" 
-                                data-image="images/p4-2.png" 
-                                data-alt="Task Management Dashboard main screen" 
-                                aria-label="View Task Management Dashboard screenshot 2"
-                            > 
-                                <img src="images/p4-2.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="task-management-dashboard" 
-                                data-image="images/p4-3.png" 
-                                data-alt="Task Management Dashboard main screen" 
-                                aria-label="View Task Management Dashboard screenshot 3"
-                            > 
-                                <img src="images/p4-3.png" alt="" > 
-                            </button>
-                        </div> 
-                    </div> 
-                    <div class="project-content"> 
-                        <span class="project-type"> React </span> 
-                        <h3>Task Management Dashboard</h3> 
-                        <p> 
-                            A responsive dashboard for managing and tracking tasks and projects. 
-                        </p> 
-                        <div class="project-tags"> 
-                            <span>React Application Architecture</span> 
-                            <span>JavaScript</span> 
-                            <span>HTML</span> 
-                        </div> 
-                        <div class="project-links"> 
-                            <a 
-                                href="https://github.com/bmarkjan-stack/p4-task-management-dashboard" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="View Task Management Dashboard source code on GitHub" 
-                            > 
-                                GitHub ↗ 
-                            </a> 
-                        </div> 
-                    </div>
-                </article>
-
-                <!-- Automated File Organizer -->
-                <article class="project-card" data-languages="Python">
-                    <div class="project-gallery"> 
-                        <div class="project-main-image">
-                            <button
-                                class="main-image-button"
-                                type="button"
-                                aria-label="Open Automated File Organizer screenshot in full size"
-                                data-image="images/p7-1.png"
-                                data-alt="Automated File Organizer main screenshot"
-                            >
-                                <img
-                                    id="automated-file-organizer-main-image"
-                                    src="images/p7-1.png"
-                                    alt="Automated File Organizer main screenshot"
-                                >
-                            </button>
-                        </div>
-                        <div class="project-thumbnails"> 
-                            <button 
-                                class="thumbnail active" 
-                                type="button" 
-                                data-gallery="automated-file-organizer" 
-                                data-image="images/p7-1.png" 
-                                data-alt="Automated File Organizer main screen" 
-                                aria-label="View Automated File Organizer screenshot 1"
-                            > 
-                                <img src="images/p7-1.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="automated-file-organizer" 
-                                data-image="images/p7-2.png" 
-                                data-alt="Automated File Organizer main screen" 
-                                aria-label="View Automated File Organizer screenshot 2"
-                            > 
-                                <img src="images/p7-2.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="automated-file-organizer" 
-                                data-image="images/p7-3.png" 
-                                data-alt="Automated File Organizer main screen" 
-                                aria-label="View Automated File Organizer screenshot 3"
-                            > 
-                                <img src="images/p7-3.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="automated-file-organizer" 
-                                data-image="images/p7-4.png" 
-                                data-alt="Automated File Organizer main screen" 
-                                aria-label="View Automated File Organizer screenshot 4"
-                            > 
-                                <img src="images/p7-4.png" alt="" > 
-                            </button>
-                        </div> 
-                    </div> 
-                    <div class="project-content"> 
-                        <span class="project-type"> Python </span> 
-                        <h3>Automated File Organizer</h3> 
-                        <p> 
-                            An application for automatically organizing and managing files on your computer. 
-                        </p> 
-                        <div class="project-tags"> 
-                            <span>Python</span> 
-                            <span>Automation</span> 
-                            <span>File Management</span> 
-                        </div> 
-                        <div class="project-links"> 
-                            <a 
-                                href="https://github.com/bmarkjan-stack/p7-automated-file-organizer" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="View Automated File Organizer source code on GitHub" 
-                            > 
-                                GitHub ↗ 
-                            </a> 
-                        </div> 
-                    </div>
-                </article>
-
-                <!-- Weather Dashboard -->
-                <article class="project-card" data-languages="JavaScript,HTML,CSS">
-                    <div class="project-gallery"> 
-                        <!-- Main image --> 
-                        <div class="project-main-image">
-                            <button
-                                class="main-image-button"
-                                type="button"
-                                aria-label="Open Weather Dashboard screenshot in full size"
-                                data-image="images/p3-1.png"
-                                data-alt="Weather Dashboard main screenshot"
-                            >
-                                <img
-                                    id="weather-dashboard-main-image"
-                                    src="images/p3-1.png"
-                                    alt="Weather Dashboard main screenshot"
-                                >
-                            </button>
-                        </div>
-                        <!-- Thumbnails --> 
-                        <div class="project-thumbnails"> 
-                            <button 
-                                class="thumbnail active" 
-                                type="button" 
-                                data-gallery="weather-dashboard" 
-                                data-image="images/p3-1.png" 
-                                data-alt="Weather Dashboard main screen" 
-                                aria-label="View Weather Dashboard screenshot 1"
-                            > 
-                                <img src="images/p3-1.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="weather-dashboard" 
-                                data-image="images/p3-2.png" 
-                                data-alt="Weather Dashboard main screen" 
-                                aria-label="View Weather Dashboard screenshot 2"
-                            > 
-                                <img src="images/p3-2.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="weather-dashboard" 
-                                data-image="images/p3-3.png" 
-                                data-alt="Weather Dashboard main screen" 
-                                aria-label="View Weather Dashboard screenshot 3"
-                            > 
-                                <img src="images/p3-3.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="weather-dashboard" 
-                                data-image="images/p3-4.png" 
-                                data-alt="Weather Dashboard main screen" 
-                                aria-label="View Weather Dashboard screenshot 4"
-                            > 
-                                <img src="images/p3-4.png" alt="" > 
-                            </button>
-                        </div> 
-                    </div> 
-                    <div class="project-content"> 
-                        <span class="project-type"> JavaScript </span> 
-                        <h3>Weather Dashboard</h3> 
-                        <p> 
-                            A website that provides current weather information and a 5-day forecast for any city, using the Open-Meteo API.
-                        </p> 
-                        <div class="project-tags"> 
-                            <span>Async JavaScript</span> 
-                            <span>HTML</span> 
-                            <span>APIs</span> 
-                        </div> 
-                        <div class="project-links"> 
-                            <a 
-                                href="https://github.com/bmarkjan-stack/p3-weather-dashboard" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="View Weather Dashboard source code on GitHub" 
-                            > 
-                                GitHub ↗ 
-                            </a> 
-                        </div> 
-                    </div>
-                </article>
-
-                <!-- Restaurant / Café Website -->
-                <article class="project-card" data-languages="HTML,CSS,JavaScript">
-                    <div class="project-gallery"> 
-                        <!-- Main image --> 
-                        <div class="project-main-image">
-                            <button
-                                class="main-image-button"
-                                type="button"
-                                aria-label="Open Restaurant / Café Website screenshot in full size"
-                                data-image="images/p1-1.png"
-                                data-alt="Restaurant / Café Website main screenshot"
-                            >
-                                <img
-                                    id="cafe-main-image"
-                                    src="images/p1-1.png"
-                                    alt="Restaurant / Café Website main screenshot"
-                                >
-                            </button>
-                        </div>
-                        <!-- Thumbnails --> 
-                        <div class="project-thumbnails"> 
-                            <button 
-                                class="thumbnail active" 
-                                type="button" 
-                                data-gallery="cafe" 
-                                data-image="images/p1-1.png" 
-                                data-alt="Restaurant / Café Website main screen" 
-                                aria-label="View Restaurant / Café Website screenshot 1"
-                            > 
-                                <img src="images/p1-1.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="cafe" 
-                                data-image="images/p1-2.png" 
-                                data-alt="Restaurant / Café Website main screen" 
-                                aria-label="View Restaurant / Café Website screenshot 2"
-                            > 
-                                <img src="images/p1-2.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="cafe" 
-                                data-image="images/p1-3.png" 
-                                data-alt="Restaurant / Café Website interaction screen" 
-                                aria-label="View Restaurant / Café Website screenshot 3" 
-                            > 
-                                <img src="images/p1-3.png" alt="" > 
-                            </button> 
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="cafe" 
-                                data-image="images/p1-4.png" 
-                                data-alt="Restaurant / Café Website statistics screen" 
-                                aria-label="View Restaurant / Café Website screenshot 4" 
-                            > 
-                                <img src="images/p1-4.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="cafe" 
-                                data-image="images/p1-5.png" 
-                                data-alt="Restaurant / Café Website statistics screen" 
-                                aria-label="View Restaurant / Café Website screenshot 5" 
-                            > 
-                                <img src="images/p1-5.png" alt="" > 
-                            </button>
-                            <button 
-                                class="thumbnail" 
-                                type="button" 
-                                data-gallery="cafe" 
-                                data-image="images/p1-6.png" 
-                                data-alt="Restaurant / Café Website statistics screen" 
-                                aria-label="View Restaurant / Café Website screenshot 6" 
-                            > 
-                                <img src="images/p1-6.png" alt="" > 
-                            </button>
-                        </div> 
-                    </div> 
-                    <div class="project-content"> 
-                        <span class="project-type"> HTML / CSS </span> 
-                        <h3>Restaurant / Café Website</h3> 
-                        <p> 
-                            A responsive website for a local restaurant and café, featuring menu displays, reservation functionality, and contact information. 
-                        </p> 
-                        <div class="project-tags"> 
-                            <span>HTML</span> 
-                            <span>CSS</span> 
-                            <span>JavaScript</span> 
-                        </div> 
-                        <div class="project-links"> 
-                            <a 
-                                href="https://github.com/bmarkjan-stack/p1-restaurant-cafe-website" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                aria-label="View Restaurant / Café Website source code on GitHub" 
-                            > 
-                                GitHub ↗ 
-                            </a> 
-                        </div> 
-                    </div>
-                </article>
-
-            </div>
-
-            <!-- Pagination -->
-            <nav
-                class="projects-pagination"
-                id="projects-pagination"
-                aria-label="Projects pagination"
-            >
-                <button
-                    id="projects-prev"
-                    class="pagination-button"
-                    type="button"
-                    aria-label="Previous projects page"
-                >
-                    ← Previous
-                </button>
-
-                <div
-                    id="projects-page-numbers"
-                    class="pagination-pages"
-                    aria-label="Project pages"
-                ></div>
-
-                <button
-                    id="projects-next"
-                    class="pagination-button"
-                    type="button"
-                    aria-label="Next projects page"
-                >
-                Next →
-                </button>
-            </nav>
-
         </section>
 
         <!-- Contact -->

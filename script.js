@@ -257,26 +257,38 @@ thumbnails.forEach((thumbnail) => {
         const imageSource = thumbnail.dataset.image;
         const imageAlt = thumbnail.dataset.alt;
         const mainImage = document.getElementById(`${galleryName}-main-image`);
+        const gallery = thumbnail.closest(".project-gallery");
 
-        if (!mainImage || !imageSource) {
+        if (!imageSource) {
             return;
         }
 
-        // Update main image
-        mainImage.src = imageSource;
-        if (imageAlt) {
-            mainImage.alt = imageAlt;
-        }
+        if (gallery?.querySelector(".project-thumbnails")?.dataset.galleryMode === "lightbox") {
+            const thumbnailImage = thumbnail.querySelector("img");
 
-        // Update the lightbox button
-        const gallery = thumbnail.closest(".project-gallery");
-        const mainImageButton = gallery?.querySelector(".main-image-button");
+            if (thumbnailImage) {
+                openLightbox(thumbnailImage, imageSource);
+            }
+        } else {
+            if (!mainImage) {
+                return;
+            }
 
-        if (mainImageButton) {
-            mainImageButton.dataset.image =
-                imageSource;
-            mainImageButton.dataset.alt =
-                imageAlt || mainImage.alt;
+            // Update main image
+            mainImage.src = imageSource;
+            if (imageAlt) {
+                mainImage.alt = imageAlt;
+            }
+
+            // Update the lightbox button
+            const mainImageButton = gallery?.querySelector(".main-image-button");
+
+            if (mainImageButton) {
+                mainImageButton.dataset.image =
+                    imageSource;
+                mainImageButton.dataset.alt =
+                    imageAlt || mainImage.alt;
+            }
         }
 
         // Update active thumbnail
@@ -288,6 +300,9 @@ thumbnails.forEach((thumbnail) => {
                 "aria-current",
                 "false"
             );
+            if (item.hasAttribute("aria-pressed")) {
+                item.setAttribute("aria-pressed", "false");
+            }
         });
 
         thumbnail.classList.add("active");
@@ -295,6 +310,9 @@ thumbnails.forEach((thumbnail) => {
             "aria-current",
             "true"
         );
+        if (thumbnail.hasAttribute("aria-pressed")) {
+            thumbnail.setAttribute("aria-pressed", "true");
+        }
     });
 });
 
@@ -363,14 +381,16 @@ function updateLightboxImage() {
 /* =========================================
    OPEN LIGHTBOX
 ========================================= */
-function openLightbox(image) {
+function openLightbox(image, selectedSource) {
     if (
         !lightbox || !lightboxImage
     ) {
         return;
     }
 
-    currentGallery = getProjectGallery(image);
+    currentGallery = image.dataset.lightboxSingle === "true"
+        ? []
+        : getProjectGallery(image);
 
     if (currentGallery.length === 0) {
         currentGallery = [
@@ -381,7 +401,7 @@ function openLightbox(image) {
         ];
     }
 
-    const currentSrc = image.getAttribute("src");
+    const currentSrc = selectedSource || image.getAttribute("src");
     const matchingIndex = currentGallery.findIndex(
         (item) => item.src === currentSrc
     );
