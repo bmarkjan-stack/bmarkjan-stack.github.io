@@ -1530,3 +1530,20 @@ ul {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =========================================
+   BINARY WAVE BACKGROUND
+========================================= */
+#binary-wave {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Let the wave show through the skills band */
+.skills-section {
+    background: color-mix(in srgb, var(--surface-secondary) 70%, transparent);
+}
